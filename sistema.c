@@ -87,216 +87,208 @@ int main(void) {
 
 	while (crud != 's')
 		MostrarTela(); //bem-vindo 
-		scanf("%c", &crud);
+	scanf("%c", &crud);
 
-		switch (crud) {
-			{
+	switch (crud) {
+		{
 
-		//CREATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
-		
-		case 'c': //create
-			SelecaodeImovelC(); //"Voce deseja cadastrar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-			scanf("%*c%c", &tipoImovel);
-			switch (tipoImovel)
-			{
-			case 't': //terreno
-				for (i = 0; i < 100; i++) {
-					if (terrenos[i].titulo[0] == '\0') //caso encontre algum terreno sem nenhum caracter, pare.
-						break;
-				}
-				MostrarTelaTerreno(); //"Por favor digite a area, o valor e se o terreno esta disponivel para aluguel ou venda(a ou v).\n"
-				scanf("%d%d%*c%c%*c", &terrenos[i].area, &terrenos[i].valor, &terrenos[i].aouv); //cadastramento no array do terreno não existente
-				MostrarTelaTerreno2(); //"Por favor digite o titulo do anuncio do terreno e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
-				//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
-				fgets(&terrenos[i].titulo, 101, stdin);
-				fgets(&terrenos[i].endereco.rua, 101, stdin);
-				scanf("%d%*c", &terrenos[i].endereco.num);
-				fgets(&terrenos[i].endereco.bairro, 101, stdin);
-				fgets(&terrenos[i].endereco.cidade, 101, stdin);
-				fgets(&terrenos[i].endereco.cep, 101, stdin);
-				printf("\n\n%s foi cadastrado com sucesso!\n\n", terrenos[i].titulo);
-				break;
-			case 'c': //casas
+			//CREATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-				for (i = 0; i < 100; i++) {
-					if (casas[i].titulo[0] == '\0')
-						break;
-				}
+	case 'c': //create
+		SelecaodeImovelC(); //"Voce deseja cadastrar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
+		scanf("%*c%c", &tipoImovel);
+		switch (tipoImovel)
+		{
+		case 't': //terreno
+			for (i = 0; i < 100; i++) {
+				if (terrenos[i].titulo[0] == '\0') //caso encontre algum terreno sem nenhum caracter, pare.
+					break;
+			}
+			MostrarTelaTerreno(); //"Por favor digite a area, o valor e se o terreno esta disponivel para aluguel ou venda(a ou v).\n"
+			scanf("%d%d%*c%c%*c", &terrenos[i].area, &terrenos[i].valor, &terrenos[i].aouv); //cadastramento no array do terreno não existente
+			MostrarTelaTerreno2(); //"Por favor digite o titulo do anuncio do terreno e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
+			//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
+			fgets(&terrenos[i].titulo, 101, stdin);
+			fgets(&terrenos[i].endereco.rua, 101, stdin);
+			scanf("%d%*c", &terrenos[i].endereco.num);
+			fgets(&terrenos[i].endereco.bairro, 101, stdin);
+			fgets(&terrenos[i].endereco.cidade, 101, stdin);
+			fgets(&terrenos[i].endereco.cep, 101, stdin);
+			printf("\n\n%s foi cadastrado com sucesso!\n\n", terrenos[i].titulo);
+			break;
+		case 'c': //casas
 
-				MostrarTelaCasa(); //"Digite área do terreno, a área construida, o numero de quartos, o numero de pavimentos, o valor da casa e se ela está disponível para aluguel ou venda(a ou v).\n"
+			for (i = 0; i < 100; i++) {
+				if (casas[i].titulo[0] == '\0')
+					break;
+			}
 
-				scanf("%d%d%d%d%d%*c%c%*c", &casas[i].areaTerreno, &casas[i].areaConstruida,
-					&casas[i].numQuartos, &casas[i].numPavimentos, &casas[i].valor, &casas[i].aouv);
+			MostrarTelaCasa(); //"Digite área do terreno, a área construida, o numero de quartos, o numero de pavimentos, o valor da casa e se ela está disponível para aluguel ou venda(a ou v).\n"
 
-				MostrarTelaCasa2(); //Por favor digite o titulo do anuncio da casa e seu endereco completo(Rua, numero, bairro, cidade e cep)
-				//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
-				fgets(&casas[i].titulo, 101, stdin);
-				fgets(&casas[i].endereco.rua, 101, stdin);
-				scanf("%d%*c", &casas[i].endereco.num);
-				fgets(&casas[i].endereco.bairro, 101, stdin);
-				fgets(&casas[i].endereco.cidade, 101, stdin);
-				fgets(&casas[i].endereco.cep, 101, stdin);
-				printf("\n\n%s foi cadastrado com sucesso!\n\n", casas[i].titulo);
-				break;
+			scanf("%d%d%d%d%d%*c%c%*c", &casas[i].areaTerreno, &casas[i].areaConstruida,
+				&casas[i].numQuartos, &casas[i].numPavimentos, &casas[i].valor, &casas[i].aouv);
 
-			case 'a': //apartamentos
+			MostrarTelaCasa2(); //Por favor digite o titulo do anuncio da casa e seu endereco completo(Rua, numero, bairro, cidade e cep)
+			//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
+			fgets(&casas[i].titulo, 101, stdin);
+			fgets(&casas[i].endereco.rua, 101, stdin);
+			scanf("%d%*c", &casas[i].endereco.num);
+			fgets(&casas[i].endereco.bairro, 101, stdin);
+			fgets(&casas[i].endereco.cidade, 101, stdin);
+			fgets(&casas[i].endereco.cep, 101, stdin);
+			printf("\n\n%s foi cadastrado com sucesso!\n\n", casas[i].titulo);
+			break;
 
-				for (i = 0; i < 100; i++) {
-					if (apts[i].titulo[0] == '\0')
-						break;
-				}
-				MostrarTelaApt();//"Por favor digite o andar do apartamento, a sua area, o numero de quartos e de vagas na garagem, o preco do condominio, o valor do imovel e se ele esta disponivel para aluguel ou venda(a ou v).\n"
+		case 'a': //apartamentos
 
-				scanf("%d%d%d%d%d%d%*c%c%*c", &apts[i].andar, &apts[i].area,
-					&apts[i].numQuartos, &apts[i].numVagasG, &apts[i].valorCond, &apts[i].valor, &apts[i].aouv);
+			for (i = 0; i < 100; i++) {
+				if (apts[i].titulo[0] == '\0')
+					break;
+			}
+			MostrarTelaApt();//"Por favor digite o andar do apartamento, a sua area, o numero de quartos e de vagas na garagem, o preco do condominio, o valor do imovel e se ele esta disponivel para aluguel ou venda(a ou v).\n"
 
-				MostrarTelaApt2(); //"Por favor digite o titulo do anuncio do apartamento, sua posicao e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
-				//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
-				fgets(&apts[i].posicao, 101, stdin);
-				fgets(&apts[i].titulo, 101, stdin);
-				fgets(&apts[i].endereco.rua, 101, stdin);
-				scanf("%d%*c", &apts[i].endereco.num);
-				fgets(&apts[i].endereco.bairro, 101, stdin);
-				fgets(&apts[i].endereco.cidade, 101, stdin);
-				fgets(&apts[i].endereco.cep, 101, stdin);
-				printf("\n\n%s foi cadastrado com sucesso!\n\n", apts[i].titulo);
-				break;
+			scanf("%d%d%d%d%d%d%*c%c%*c", &apts[i].andar, &apts[i].area,
+				&apts[i].numQuartos, &apts[i].numVagasG, &apts[i].valorCond, &apts[i].valor, &apts[i].aouv);
+
+			MostrarTelaApt2(); //"Por favor digite o titulo do anuncio do apartamento, sua posicao e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
+			//fgets utilizado em vez de scanf por motivo das informações que serão incluídas no array conterem espaçamentos
+			fgets(&apts[i].posicao, 101, stdin);
+			fgets(&apts[i].titulo, 101, stdin);
+			fgets(&apts[i].endereco.rua, 101, stdin);
+			scanf("%d%*c", &apts[i].endereco.num);
+			fgets(&apts[i].endereco.bairro, 101, stdin);
+			fgets(&apts[i].endereco.cidade, 101, stdin);
+			fgets(&apts[i].endereco.cep, 101, stdin);
+			printf("\n\n%s foi cadastrado com sucesso!\n\n", apts[i].titulo);
+			break;
+
+		}
+
+		break;
+
+		//UPDATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+	case 'u': //update
+		SelecaodeImovelU(); //"Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
+		scanf("%*c%c", &tipoImovel);
+		switch (tipoImovel) {
+		case 't': //terreno
+
+			for (i = 0; i < 100; i++) {
+				if (terrenos[i].titulo[0] == '\0')
+					break;
+				printf("Selecione o terreno que voce deseja atualizar\n");
+				printf("(%d): %s\n", i + 1, terrenos[i].titulo);
+			}
+
+			scanf("%d", &selecaoUpdate);
+			selecaoUpdate--;
+
+			MostrarTelaTerreno(); //"Por favor digite a area, o valor e se o terreno esta disponivel para aluguel ou venda(a ou v).\n"
+
+			scanf("%d%d%*c%c%*c", &terrenos[selecaoUpdate].area, &terrenos[selecaoUpdate].valor, &terrenos[selecaoUpdate].aouv);
+			MostrarTelaTerreno2(); //"Por favor digite o titulo do anuncio do terreno e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
+			fgets(&terrenos[selecaoUpdate].titulo, 101, stdin);
+			fgets(&terrenos[selecaoUpdate].endereco.rua, 101, stdin);
+			scanf("%d%*c", &terrenos[selecaoUpdate].endereco.num);
+			fgets(&terrenos[selecaoUpdate].endereco.bairro, 101, stdin);
+			fgets(&terrenos[selecaoUpdate].endereco.cidade, 101, stdin);
+			fgets(&terrenos[selecaoUpdate].endereco.cep, 101, stdin);
+			printf("\n\n%s foi atualizado com sucesso!\n\n", terrenos[i].titulo);
+			break;
+
+		case 'c'://casa
+
+			for (i = 0; i < 100; i++) {
+				if (casas[i].titulo[0] == '\0')
+					break;
+				printf("Selecione a casa que voce deseja atualizar\n");
+				printf("(%d): %s\n", i + 1, casas[i].titulo);
+			}
+
+			scanf("%d", &selecaoUpdate);
+			selecaoUpdate--;
+
+			MostrarTelaCasa();
+
+			scanf("%d%d%d%d%d%*c%c%*c", &casas[selecaoUpdate].areaTerreno, &casas[selecaoUpdate].areaConstruida,
+				&casas[selecaoUpdate].numQuartos, &casas[selecaoUpdate].numPavimentos, &casas[selecaoUpdate].valor, &casas[selecaoUpdate].aouv);
+
+			MostrarTelaCasa2();
+
+			fgets(&casas[i].titulo, 101, stdin);
+			fgets(&casas[i].endereco.rua, 101, stdin);
+			scanf("%d%*c", &casas[i].endereco.num);
+			fgets(&casas[i].endereco.bairro, 101, stdin);
+			fgets(&casas[i].endereco.cidade, 101, stdin);
+			fgets(&casas[i].endereco.cep, 101, stdin);
+			printf("\n\n%s foi cadastrado com sucesso!\n\n", casas[i].titulo);
+			break;
+
+		case 'a'://apartamento
+
+			for (i = 0; i < 100; i++) {
+				if (apts
+					[i].titulo[0] == '\0')
+					break;
+				printf("Selecione o apartamento que voce deseja atualizar\n");
+				printf("(%d): %s\n", i + 1, apts[i].titulo);
 
 			}
 
+			scanf("%d", &selecaoUpdate);
+			selecaoUpdate--;
+			MostrarTelaApt();
+
+			scanf("%d%d%d%d%d%d%*c%c%*c", &apts[selecaoUpdate].andar, &apts[selecaoUpdate].area,
+				&apts[selecaoUpdate].numQuartos, &apts[selecaoUpdate].numVagasG, &apts[selecaoUpdate].valorCond, &apts[selecaoUpdate].valor, &apts[selecaoUpdate].aouv);
+
+			MostrarTelaApt2();
+
+			fgets(&apts[i].posicao, 101, stdin);
+			fgets(&apts[i].titulo, 101, stdin);
+			fgets(&apts[i].endereco.rua, 101, stdin);
+			scanf("%d%*c", &apts[i].endereco.num);
+			fgets(&apts[i].endereco.bairro, 101, stdin);
+			fgets(&apts[i].endereco.cidade, 101, stdin);
+			fgets(&apts[i].endereco.cep, 101, stdin);
+			printf("\n\n%s foi cadastrado com sucesso!\n\n", apts[i].titulo);
 			break;
 
-			//UPDATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
+		}
 
-		case 'u': //update
-			SelecaodeImovelU(); //"Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-			scanf("%*c%c", &tipoImovel);
-			switch (tipoImovel) {
-			case 't': //terreno
+		break;
 
-				for (i = 0; i < 100; i++) {
-					if (terrenos[i].titulo[0] == '\0')
-						break;
-					printf("Selecione o terreno que voce deseja atualizar\n");
-					printf("(%d): %s\n", i + 1, terrenos[i].titulo);
-				}
-
-				scanf("%d", &selecaoUpdate);
-				selecaoUpdate--;
-
-				MostrarTelaTerreno(); //"Por favor digite a area, o valor e se o terreno esta disponivel para aluguel ou venda(a ou v).\n"
-
-				scanf("%d%d%*c%c%*c", &terrenos[selecaoUpdate].area, &terrenos[selecaoUpdate].valor, &terrenos[selecaoUpdate].aouv);
-				MostrarTelaTerreno2(); //"Por favor digite o titulo do anuncio do terreno e seu endereco completo(Rua, numero, bairro, cidade e cep).\n"
-				fgets(&terrenos[selecaoUpdate].titulo, 101, stdin);
-				fgets(&terrenos[selecaoUpdate].endereco.rua, 101, stdin);
-				scanf("%d%*c", &terrenos[selecaoUpdate].endereco.num);
-				fgets(&terrenos[selecaoUpdate].endereco.bairro, 101, stdin);
-				fgets(&terrenos[selecaoUpdate].endereco.cidade, 101, stdin);
-				fgets(&terrenos[selecaoUpdate].endereco.cep, 101, stdin);
-				printf("\n\n%s foi atualizado com sucesso!\n\n", terrenos[i].titulo);
-				break;
-
-			case 'c'://casa
-
-				for (i = 0; i < 100; i++) {
-					if (casas[i].titulo[0] == '\0')
-						break;
-					printf("Selecione a casa que voce deseja atualizar\n");
-					printf("(%d): %s\n", i + 1, casas[i].titulo);
-				}
-
-				scanf("%d", &selecaoUpdate);
-				selecaoUpdate--;
-
-				MostrarTelaCasa();
-
-				scanf("%d%d%d%d%d%*c%c%*c", &casas[selecaoUpdate].areaTerreno, &casas[selecaoUpdate].areaConstruida,
-					&casas[selecaoUpdate].numQuartos, &casas[selecaoUpdate].numPavimentos, &casas[selecaoUpdate].valor, &casas[selecaoUpdate].aouv);
-
-				MostrarTelaCasa2();
-
-				fgets(&casas[i].titulo, 101, stdin);
-				fgets(&casas[i].endereco.rua, 101, stdin);
-				scanf("%d%*c", &casas[i].endereco.num);
-				fgets(&casas[i].endereco.bairro, 101, stdin);
-				fgets(&casas[i].endereco.cidade, 101, stdin);
-				fgets(&casas[i].endereco.cep, 101, stdin);
-				printf("\n\n%s foi cadastrado com sucesso!\n\n", casas[i].titulo);
-				break;
-
-			case 'a'://apartamento
-
-				for (i = 0; i < 100; i++) {
-					if (apts
-						[i].titulo[0] == '\0')
-						break;
-					printf("Selecione o apartamento que voce deseja atualizar\n");
-					printf("(%d): %s\n", i + 1, apts[i].titulo);
-					
-				}
-
-				scanf("%d", &selecaoUpdate);
-				selecaoUpdate--;
-				MostrarTelaApt();
-
-				scanf("%d%d%d%d%d%d%*c%c%*c", &apts[selecaoUpdate].andar, &apts[selecaoUpdate].area,
-					&apts[selecaoUpdate].numQuartos, &apts[selecaoUpdate].numVagasG, &apts[selecaoUpdate].valorCond, &apts[selecaoUpdate].valor, &apts[selecaoUpdate].aouv);
-
-				MostrarTelaApt2();
-
-				fgets(&apts[i].posicao, 101, stdin);
-				fgets(&apts[i].titulo, 101, stdin);
-				fgets(&apts[i].endereco.rua, 101, stdin);
-				scanf("%d%*c", &apts[i].endereco.num);
-				fgets(&apts[i].endereco.bairro, 101, stdin);
-				fgets(&apts[i].endereco.cidade, 101, stdin);
-				fgets(&apts[i].endereco.cep, 101, stdin);
-				printf("\n\n%s foi cadastrado com sucesso!\n\n", apts[i].titulo);
-				break;
-
-			}
-
-			break;
-
-		default:
-			puts("Por favor, digite outra letra.");
+	default:
+		puts("Por favor, digite outra letra.");
+		}
 	}
-}
 
-//UMA FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
+	//UMA FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
 
 		case 'd': //delete
 			DeletarImovel(); //"Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
 			scanf("%*c%c", &tipoImovel);
 			switch (tipoImovel) {
-			
+
 			case 't': //terreno
 				printf("Digite o número do terreno que voce deseja deletar\n");
 				int numeroterreno;
 				scanf("%d", &numeroterreno);
-				}
-
+				remove(terrenos[numeroterreno]);
+				puts("Terreno deletado com sucesso.")
+			}
 			case 'c': //casa
 				printf("Digite o número da casa que voce deseja deletar\n");
 				int numerocasa;
 				scanf("%d", &numerocasa);
-				}
-
-
+				remove(casas[numerocasa]);
+				puts("Casa deletada com sucesso.")
+}
 			case 'a': //apartamento
 				printf("Digite o número do apartamento que voce deseja deletar\n");
 				int numeroapartamento;
 				scanf("%d", &numeroapartamento);
-				}
-
-
-
-
-
-
-
-
-
-return 0;
+				remove(apts[numeroapartamento]);
+				puts("Apartamento deletado com sucesso.")
 }
