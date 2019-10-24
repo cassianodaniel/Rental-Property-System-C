@@ -11,7 +11,7 @@ imóvel e se ele está disponível para aluguel ou venda. O sistema também deve
 • Terreno: Contém informações sobre um terreno, incluindo título anúncio e a sua área.
 
 Além disso, o sistema deve conter as seguintes funções:
-• Uma função que cadastra imóveis (casas, apartamentos,terrenos);
+• Uma função que cadastra imóveis (casas, apartamentos,terrenos); [X]
 • Uma função que consulta todos os imóveis disponíveis;
 • Uma função que busca um imóvel por título;
 • Uma função que busca um imóvel por bairro;
