@@ -168,7 +168,8 @@ int main(void) {
 				for (i = 0; i < 100; i++) {
 					printf("Selecione o terreno que voce deseja atualizar\n");
 					printf("(%d): %s\n", i + 1, terrenos[i].titulo);
-					break;
+					if(terrenos[i].titulo[0] == '\0')
+                    			break;
 				}
 
 				scanf("%d", &selecaoUpdate);
@@ -186,16 +187,14 @@ int main(void) {
 				fgets(&terrenos[selecaoUpdate].endereco.cep, 101, stdin);
 				printf("\n\n%s foi atualizado com sucesso!\n\n", terrenos[i].titulo);
 				break;
-				for (i = 0; i < 100; i++) {
-					if (terrenos[i].titulo[0] == '\0')
-						break;
-				}
+				
 			case 'c':
 
 				for (i = 0; i < 100; i++) {
 					printf("Selecione a casa que voce deseja atualizar\n");
 					printf("(%d): %s\n", i + 1, casas[i].titulo);
-					break;
+					if(terrenos[i].titulo[0] == '\0')
+                    			break;
 				}
 
 				scanf("%d", &selecaoUpdate);
@@ -222,7 +221,8 @@ int main(void) {
 				for (i = 0; i < 100; i++) {
 					printf("Selecione o terreno que voce deseja atualizar\n");
 					printf("(%d): %s\n", i + 1, apts[i].titulo);
-					break;
+					if(terrenos[i].titulo[0] == '\0')
+                    			break;
 				}
 
 				scanf("%d", &selecaoUpdate);
