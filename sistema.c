@@ -36,7 +36,7 @@ void MostrarTelaApt2() {
 }
 
 void DeletarImovel() {
-	printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n")
+	printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
 }
 
 typedef struct {
@@ -86,7 +86,7 @@ int main(void) {
 	int i, selecaoUpdate;
 
 	while (crud != 's')
-		MostrarTela(); //bem-vindo 
+		MostrarTela(); //bem-vindo
 	scanf("%c", &crud);
 
 	switch (crud) {
@@ -264,7 +264,7 @@ int main(void) {
 		}
 	}
 
-	//UMA FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
+/*	//FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
 
 		case 'd': //delete
 			DeletarImovel(); //"Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
@@ -275,20 +275,21 @@ int main(void) {
 				printf("Digite o número do terreno que voce deseja deletar\n");
 				int numeroterreno;
 				scanf("%d", &numeroterreno);
-				remove(terrenos[numeroterreno]);
-				puts("Terreno deletado com sucesso.")
+				remove(&terrenos[numeroterreno]);
+				puts("Terreno deletado com sucesso.");
 			}
 			case 'c': //casa
 				printf("Digite o número da casa que voce deseja deletar\n");
 				int numerocasa;
 				scanf("%d", &numerocasa);
-				remove(casas[numerocasa]);
-				puts("Casa deletada com sucesso.")
+				remove(&casas[numerocasa]);
+				puts("Casa deletada com sucesso.");
 }
 			case 'a': //apartamento
 				printf("Digite o número do apartamento que voce deseja deletar\n");
 				int numeroapartamento;
 				scanf("%d", &numeroapartamento);
-				remove(apts[numeroapartamento]);
-				puts("Apartamento deletado com sucesso.")
+				remove(&apts[numeroapartamento]);
+				puts("Apartamento deletado com sucesso.");
 }
+*/
