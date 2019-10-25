@@ -297,12 +297,12 @@ int main(void) {
 void ListaImoveis(){
 puts("Esta é a lista de imóveis cadastrados em nossa imobiliária");
         for (int i = 0; i < 100; i++) {  //caso encontre algum terreno sem nenhum caracter, pare.
-            if (terrenos[i].titulo == '\0'){
+            if (terrenos[i].titulo[0] == '\0'){
                 continue;}
-            else if(casas[i].titulo == '\0'){
+            else if(casas[i].titulo[0] == '\0'){
                 continue;
             }
-            else if(apts[i].titulo == '\0'){
+            else if(apts[i].titulo[0] == '\0'){
                 continue;
             }
             else{
