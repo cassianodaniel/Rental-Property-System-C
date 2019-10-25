@@ -39,6 +39,7 @@ void DeletarImovel() {
 	printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
 }
 
+
 typedef struct {
 	char rua[100];
 	int num;
@@ -77,18 +78,17 @@ typedef struct {
 } tterreno;
 
 int main(void) {
-
+    MostrarTela();
 	char crud = '.', tipoImovel; //crud = create, read, update and delete
+    scanf("%c", &crud);
 	/*declaração de arrays com suas respectivas variáveis a seguir.*/
 	tterreno terrenos[100];
 	tcasa casas[100];
 	tapt apts[100];
 	int i, selecaoUpdate;
 
-	while (crud != 's')
-		MostrarTela(); //bem-vindo
-	scanf("%c", &crud);
-
+	if (crud == 's'){
+    return 0;}
 	switch (crud) {
 		{
 
@@ -263,14 +263,13 @@ int main(void) {
 		puts("Por favor, digite outra letra.");
 		}
 	}
+}
 
 /*	//FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
-
 		case 'd': //delete
 			DeletarImovel(); //"Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
 			scanf("%*c%c", &tipoImovel);
 			switch (tipoImovel) {
-
 			case 't': //terreno
 				printf("Digite o número do terreno que voce deseja deletar\n");
 				int numeroterreno;
@@ -294,16 +293,24 @@ int main(void) {
 }
 */
 
-	
-	/*	void ListaImoveis(){
-puts("Esta é a lista de imóveis (terrenos) cadastrados em nossa imobiliária por título");
+/* 
+void ListaImoveis(){
+puts("Esta é a lista de imóveis cadastrados em nossa imobiliária");
         for (int i = 0; i < 100; i++) {  //caso encontre algum terreno sem nenhum caracter, pare.
-        if (terrenos[i].titulo == '\0'){
-        break;
-        }
-        else{
-        printf("%d",terrenos[i].titulo);
-        }
+            if (terrenos[i].titulo == '\0'){
+                continue;}
+            else if(casas[i].titulo == '\0'){
+                continue;
+            }
+            else if(apts[i].titulo == '\0'){
+                continue;
+            }
+            else{
+                printf("%d",terrenos[i].titulo);
+                printf("%d",casas[i].titulo);
+                printf("%d",apts[i].titulo);
+            }
 
     }
-}*/
+*/ 
+
