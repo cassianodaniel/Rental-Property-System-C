@@ -293,3 +293,17 @@ int main(void) {
 				puts("Apartamento deletado com sucesso.");
 }
 */
+
+	
+	/*	void ListaImoveis(){
+puts("Esta é a lista de imóveis (terrenos) cadastrados em nossa imobiliária por título");
+        for (int i = 0; i < 100; i++) {  //caso encontre algum terreno sem nenhum caracter, pare.
+        if (terrenos[i].titulo == '\0'){
+        break;
+        }
+        else{
+        printf("%d",terrenos[i].titulo);
+        }
+
+    }
+}*/
