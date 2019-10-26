@@ -296,21 +296,30 @@ int main(void) {
 /* 
 void ListaImoveis(){
 puts("Esta é a lista de imóveis cadastrados em nossa imobiliária");
+
+int auxt = 2;
+int auxc = 2;
+int auxa = 2;
+
         for (int i = 0; i < 100; i++) {  //caso encontre algum terreno sem nenhum caracter, pare.
             if (terrenos[i].titulo[0] == '\0'){
-                continue;}
+                auxt = 1;}
+                if (auxt > 1){
+                printf("%d", terrenos[i].titulo;
+                }
+
             else if(casas[i].titulo[0] == '\0'){
-                continue;
-            }
-            else if(apts[i].titulo[0] == '\0'){
-                continue;
-            }
-            else{
-                printf("%d",terrenos[i].titulo);
-                printf("%d",casas[i].titulo);
-                printf("%d",apts[i].titulo);
+                auxc = 1;
+                if (auxc > 1){
+                printf("%d", casas[i].titulo;
+                }
             }
 
-    }
-*/ 
+            else if(apts[i].titulo[0] == '\0'){
+                auxc = 1;
+                if (auxa > 1){
+                printf("%d", apts[i].titulo;
+                }
+            }
+        }
 
