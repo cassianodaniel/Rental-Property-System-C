@@ -12,8 +12,8 @@ imóvel e se ele está disponível para aluguel ou venda. O sistema também deve
 
 Além disso, o sistema deve conter as seguintes funções:
 • Uma função que cadastra imóveis (casas, apartamentos,terrenos); [X]
-• Uma função que consulta todos os imóveis disponíveis;
-• Uma função que busca um imóvel por título;
+• Uma função que consulta todos os imóveis disponíveis; [X]
+• Uma função que busca um imóvel por título; 
 • Uma função que busca um imóvel por bairro;
 • Uma função que busca os imóveis acima de um determinado valor.
 • Uma função que retorna todos os imóveis disponíveis para vender por tipo (casa, apartamento, terreno);
