@@ -69,6 +69,7 @@ typedef struct {
 	char posicao[MAX_ARRAY];
 	int area, numQuartos, numVagasG, andar;
 	int valor, valorCond;
+	int ativo;
 	tendereco endereco;
 
 } tapt;
@@ -84,7 +85,7 @@ typedef struct {
 } tterreno;
 
 int main(void) {
-    ativo = 1;
+    //int ativo = 1;
 	char crud = '.', tipoImovel; //crud = create, read, update and delete
 	/*declaração de arrays com suas respectivas variáveis a seguir.*/
 	tterreno terrenos[MAX_ARRAY];
@@ -283,12 +284,11 @@ int main(void) {
                     for (i = 0; i < MAX_ARRAY; i++) {
                     if (terrenos[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione o terreno que voce deseja atualizar\n");
+                    printf("Selecione o terreno que voce deseja deletar\n");
                     printf("(%d): %s\n", i + 1, terrenos[i].titulo);
                     }
-
                     scanf("%d%*c", &numeroterreno);
-                    ativo = 0;
+                    terrenos[numeroterreno].ativo = 0;
                     puts("Terreno deletado com sucesso.");
                     break;
 
@@ -299,14 +299,13 @@ int main(void) {
                     int numerocasa;
 
                     for (i = 0; i < MAX_ARRAY; i++) {
-                    if (terrenos[i].titulo[0] == '\0')
+                    if (casas[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione o terreno que voce deseja atualizar\n");
-                    printf("(%d): %s\n", i + 1, terrenos[i].titulo);
+                    printf("Selecione a casa que voce deseja deletar\n");
+                    printf("(%d): %s\n", i + 1, casas[i].titulo);
                     }
-
                     scanf("%d%*c", &numerocasa);
-                    ativo = 0;
+                    casas[numerocasa].ativo = 0;
                     puts("Casa deletada com sucesso.");
                     break;
 
@@ -315,14 +314,13 @@ int main(void) {
                     int numeroapartamento;
 
                     for (i = 0; i < MAX_ARRAY; i++) {
-                    if (terrenos[i].titulo[0] == '\0')
+                    if (apts[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione o terreno que voce deseja atualizar\n");
-                    printf("(%d): %s\n", i + 1, terrenos[i].titulo);
+                    printf("Selecione o apartamento que voce deseja deletar\n");
+                    printf("(%d): %s\n", i + 1, apts[i].titulo);
                     }
-
                     scanf("%d%*c", &numeroapartamento);
-                    ativo = 0;
+                    apts[numeroapartamento].ativo = 0;
                     puts("Apartamento deletado com sucesso.");
                     break;
                 }
@@ -330,8 +328,8 @@ int main(void) {
         }
     }
 
-
-/*void ListaImoveis(){
+/*
+void ListaImoveis(){
 puts("Esta é a lista de imóveis cadastrados em nossa imobiliária");
 int auxt = 2;
 int auxc = 2;
@@ -340,18 +338,23 @@ int auxa = 2;
             if (terrenos[i].titulo[0] == '\0'){
                 auxt = 1;}
                 if (auxt > 1){
-                printf("%d", terrenos[i].titulo;
+                    if (terrenos[i].ativo == 1){
+                printf("%d", terrenos[i].titulo);
+                    }
                 }
             else if(casas[i].titulo[0] == '\0'){
                 auxc = 1;
                 if (auxc > 1){
-                printf("%d", casas[i].titulo;
+                    if (casas[i].ativo == 1){
+                    printf("%d", casas[i].titulo);
                 }
             }
+        }
             else if(apts[i].titulo[0] == '\0'){
                 auxc = 1;
                 if (auxa > 1){
-                printf("%d", apts[i].titulo;
+                    if (apts[i].ativo == 1){
+                printf("%d", apts[i].titulo);
                 }
             }
         }
