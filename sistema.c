@@ -47,6 +47,7 @@ typedef struct {
 	char bairro[100];
 	char cidade[100];
 	char cep[15];
+	int ativo;
 
 } tendereco;
 
@@ -55,6 +56,7 @@ typedef struct {
 	char titulo[100];
 	int areaTerreno, areaConstruida, numQuartos, numPavimentos;
 	int valor;
+    int ativo;
 	tendereco endereco;
 
 } tcasa;
@@ -74,12 +76,13 @@ typedef struct {
 	char titulo[100];
 	int area;
 	int valor;
+    int ativo;
 	tendereco endereco;
 
 } tterreno;
 
 int main(void) {
-
+    ativo = 1;
 	char crud = '.', tipoImovel; //crud = create, read, update and delete
 	/*declaração de arrays com suas respectivas variáveis a seguir.*/
 	tterreno terrenos[100];
@@ -283,7 +286,7 @@ int main(void) {
                     }
 
                     scanf("%d%*c", &numeroterreno);
-                    remove(&terrenos[numeroterreno]);
+                    ativo = 0;
                     puts("Terreno deletado com sucesso.");
                     break;
 
@@ -301,7 +304,7 @@ int main(void) {
                     }
 
                     scanf("%d%*c", &numerocasa);
-                    remove(&casas[numerocasa]);
+                    ativo = 0;
                     puts("Casa deletada com sucesso.");
                     break;
 
@@ -317,7 +320,7 @@ int main(void) {
                     }
 
                     scanf("%d%*c", &numeroapartamento);
-                    remove(&apts[numeroapartamento]);
+                    ativo = 0;
                     puts("Apartamento deletado com sucesso.");
                     break;
                 }
