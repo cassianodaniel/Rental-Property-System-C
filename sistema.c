@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #define MAX_ARRAY 100
 
@@ -93,6 +92,11 @@ int main(void) {
 	tcasa casas[MAX_ARRAY];
 	tapt apts[MAX_ARRAY];
 	int i, selecaoUpdate;
+
+    int j;
+    for (j = 0; j< MAX_ARRAY; j++){
+    terrenos[j].ativo = 1;
+    }
 
 	while(crud != 's'){
 
@@ -279,7 +283,7 @@ int main(void) {
                 switch (tipoImovel) {
                 case 't': //terreno
 
-                    printf("Digite o numero do terreno que voce deseja deletar\n");
+                    puts("Digite o numero do terreno que voce deseja deletar:");
 
                     int numeroterreno;
 
@@ -290,11 +294,12 @@ int main(void) {
                     if (terrenos[i].ativo != 0){
                     printf("(%d): %s\n", i + 1, terrenos[i].titulo);
                         }
-                    scanf("%d%*c", &numeroterreno);
+                    scanf("%d%*c", &numeroterreno+1);
                     terrenos[numeroterreno].ativo = 0;
                     puts("Terreno deletado com sucesso.");
                     break;
                     }
+                    break;
 
                 case 'c': //casa
 
