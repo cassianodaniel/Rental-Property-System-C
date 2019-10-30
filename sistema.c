@@ -3,13 +3,11 @@
 
 
 void MostrarTela() {
-	printf("\tSeja bem-vindo(a) ao simulador de imobiliaria!\nNele, voce podera cadastrar"
-		"novos imoveis, ler os cadastrados de diversas formas, edita-los e deleta-los.\n"
-		"Digite a letra da opcao que voce deseja selecionar: cadastrar(c), visualizar(r), editar(u)"
-		"ou deletar(d) um imovel.\n"
-		"Se voce deseja sair do simulador, digite s.\n");
+	printf("\t\tSeja bem-vindo(a) ao simulador de imobiliaria!\n"
+        "Voce pode cadastrar (c),"
+		"visualizar(r), editar(u) e deletar(d) imoveis.\n"
+		"Para sair do simulador, digite s.\n");
 }
-
 void SelecaodeImovelC() {
 	printf("Voce deseja cadastrar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
 }
@@ -93,9 +91,12 @@ int main(void) {
 	tapt apts[MAX_ARRAY];
 	int i, selecaoUpdate;
 
+	//for para ativar todos os imóveis
     int j;
     for (j = 0; j< MAX_ARRAY; j++){
     terrenos[j].ativo = 1;
+    casas[j].ativo = 1;
+    apts[j].ativo = 1;
     }
 
 	while(crud != 's'){
@@ -129,6 +130,8 @@ int main(void) {
                 fgets(&terrenos[i].endereco.cep, MAX_ARRAY+1, stdin);
                 terrenos[i].ativo = 1;
                 printf("\n\n%s foi cadastrado com sucesso!\n\n", terrenos[i].titulo);
+                printf("digite a area:");
+                
                 break;
             case 'c': //casas
 
@@ -283,14 +286,14 @@ int main(void) {
                 switch (tipoImovel) {
                 case 't': //terreno
 
-                    puts("Digite o numero do terreno que voce deseja deletar:");
+                    puts("\t\tDigite o numero do terreno que voce deseja deletar:\n");
 
                     int numeroterreno;
 
                     for (i = 0; i < MAX_ARRAY; i++) {
                     if (terrenos[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione o terreno que voce deseja deletar\n");
+                    printf("\tSelecione o terreno que voce deseja deletar:\n");
                     if (terrenos[i].ativo != 0){
                     printf("(%d): %s\n", i + 1, terrenos[i].titulo);
                         }
@@ -303,34 +306,41 @@ int main(void) {
 
                 case 'c': //casa
 
-                    printf("Digite o número da casa que voce deseja deletar\n");
+                    puts("Digite o numero da casa que voce deseja deletar:");
 
                     int numerocasa;
 
                     for (i = 0; i < MAX_ARRAY; i++) {
                     if (casas[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione a casa que voce deseja deletar\n");
+                    printf("Selecione o terreno que voce deseja deletar:\n");
+                    if (casas[i].ativo != 0){
                     printf("(%d): %s\n", i + 1, casas[i].titulo);
-                    }
-                    scanf("%d%*c", &numerocasa);
+                        }
+                    scanf("%d%*c", &numerocasa+1);
                     casas[numerocasa].ativo = 0;
                     puts("Casa deletada com sucesso.");
                     break;
+                    }
+                    break;
 
                 case 'a': //apartamento
-                    printf("Digite o número do apartamento que voce deseja deletar\n");
-                    int numeroapartamento;
+                    puts("Digite o numero do apartamento que voce deseja deletar:");
+
+                    int numeroapt;
 
                     for (i = 0; i < MAX_ARRAY; i++) {
                     if (apts[i].titulo[0] == '\0')
                         break;
-                    printf("Selecione o apartamento que voce deseja deletar\n");
+                    printf("Selecione o terreno que voce deseja deletar:\n");
+                    if (apts[i].ativo != 0){
                     printf("(%d): %s\n", i + 1, apts[i].titulo);
-                    }
-                    scanf("%d%*c", &numeroapartamento);
-                    apts[numeroapartamento].ativo = 0;
+                        }
+                    scanf("%d%*c", &numeroapt+1);
+                    apts[numeroapt].ativo = 0;
                     puts("Apartamento deletado com sucesso.");
+                    break;
+                    }
                     break;
                 }
             }
