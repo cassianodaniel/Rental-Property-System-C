@@ -1,3 +1,4 @@
+
 #include <stdio.h>
 #define MAX_ARRAY 100
 
@@ -122,6 +123,7 @@ int main(void) {
                 fgets(&terrenos[i].endereco.bairro, MAX_ARRAY+1, stdin);
                 fgets(&terrenos[i].endereco.cidade, MAX_ARRAY+1, stdin);
                 fgets(&terrenos[i].endereco.cep, MAX_ARRAY+1, stdin);
+                terrenos[i].ativo = 1;
                 printf("\n\n%s foi cadastrado com sucesso!\n\n", terrenos[i].titulo);
                 break;
             case 'c': //casas
@@ -277,7 +279,7 @@ int main(void) {
                 switch (tipoImovel) {
                 case 't': //terreno
 
-                    printf("Digite o número do terreno que voce deseja deletar\n");
+                    printf("Digite o numero do terreno que voce deseja deletar\n");
 
                     int numeroterreno;
 
@@ -285,12 +287,14 @@ int main(void) {
                     if (terrenos[i].titulo[0] == '\0')
                         break;
                     printf("Selecione o terreno que voce deseja deletar\n");
+                    if (terrenos[i].ativo != 0){
                     printf("(%d): %s\n", i + 1, terrenos[i].titulo);
-                    }
+                        }
                     scanf("%d%*c", &numeroterreno);
                     terrenos[numeroterreno].ativo = 0;
                     puts("Terreno deletado com sucesso.");
                     break;
+                    }
 
                 case 'c': //casa
 
@@ -324,9 +328,9 @@ int main(void) {
                     puts("Apartamento deletado com sucesso.");
                     break;
                 }
+            }
         }
-        }
-    }
+	}
 
 /*
 void ListaImoveis(){
