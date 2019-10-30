@@ -123,7 +123,8 @@ int main(void) {
             scanf("%*c%c", &tipoImovel);
             switch (tipoImovel)
             {
-            case 't': //terreno
+            case 't':
+            case 'T': //terreno
                 for (i = 0; i < MAX_ARRAY; i++) {
                     if (terrenos[i].titulo[0] == '\0') //caso encontre algum terreno sem nenhum caracter, pare.
                         break;
@@ -154,8 +155,6 @@ int main(void) {
 
                 printf("Por favor, digite o CEP do terreno.");
                 fgets(&terrenos[i].endereco.cep, MAX_ARRAY+1, stdin);
-
-                terrenos[i].ativo = 1;
 
                 printf("\n\n%s foi cadastrado com sucesso!\n\n", terrenos[i].titulo);
 
