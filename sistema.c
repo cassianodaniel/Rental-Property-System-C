@@ -218,10 +218,9 @@ int main(void) {
                 puts("Por favor, digite o preço do condomínio:");
                 scanf("%d", &apts[i].valorCond);
                 puts("Por favor, digite o valor do imóvel:");
-                scanf("%d", &apts[i].valor);
+                scanf("%d%*c", &apts[i].valor);
                 puts("O apartamento está disponível para aluguel(a) ou para venda(v)?:");
-                scanf("%d", &apts[i].aouv);
-                printf("\n\n%s foi cadastrado com sucesso!\n\n", apts[i].titulo);
+                scanf("%c%*c", &apts[i].aouv);
 
                 puts("Por favor, digite o titulo do anuncio do apartamento.");
                 fgets(apts[i].titulo, MAX_ARRAY, stdin);
@@ -238,7 +237,7 @@ int main(void) {
                 printf("Por favor, digite o número do apartamento na rua.\n");
                 scanf("%d%*c", &apts[i].endereco.num);
 
-                printf("Por favor, digite o CEP do apartamento.");
+                printf("Por favor, digite o CEP do apartamento\n.");
                 fgets(apts[i].endereco.cep, MAX_ARRAY, stdin);
 
                 puts("Por favor, digite a posição do apartamento");
