@@ -4,46 +4,6 @@
 #include <string.h>
 #define MAX_ARRAY 100
 
-
-void MostrarTela() {
-	printf("Seja bem-vindo(a) ao simulador de imobiliária!\n\n"
-        "C. CADASTRAR IMÓVEIS\n"
-		"R. VISUALIZAR IMÓVEIS\n"
-		"U. ATUALIZAR IMÓVEIS\n"
-		"D. DELETAR IMÓVEIS\n"
-		"S. SAIR\n\n");
-}
-void SelecaodeImovelC() {
-	printf("Voce deseja cadastrar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-}
-void SelecaodeImovelU() {
-	printf("Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-}
-void MostrarTelaTerreno() {
-	printf("Por favor digite a area, o valor e se o terreno esta disponivel para aluguel ou venda(a ou v).\n");
-}
-void MostrarTelaTerreno2() {
-	printf("Por favor digite o titulo do anuncio do terreno e seu endereco completo(Rua, numero, bairro, cidade e cep).\n");
-}
-void MostrarTelaCasa() {
-	printf("Por favor digite a area do terreno, a area construida, o numero de quartos, "
-		"o numero de pavimentos, o valor da casa e se ela esta disponivel para aluguel ou venda(a ou v).\n");
-}
-void MostrarTelaCasa2() {
-	printf("Por favor digite o titulo do anuncio da casa e seu endereco completo(Rua, numero, bairro, cidade e cep).\n");
-}
-void MostrarTelaApt() {
-	printf("Por favor digite o andar do apartamento, a sua area, o numero de quartos e de vagas na garagem, "
-		"o preco do condominio, o valor do imovel e se ele esta disponivel para aluguel ou venda(a ou v).\n");
-}
-void MostrarTelaApt2() {
-	printf("Por favor digite o titulo do anuncio do apartamento, sua posicao e seu endereco completo(Rua, numero, bairro, cidade e cep).\n");
-}
-
-void DeletarImovel() {
-	printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-}
-
 extern void ListaImoveis();
 
 typedef struct {
@@ -107,7 +67,12 @@ int main(void) {
 
 	while(crud != 's'){
 
-        MostrarTela();
+        printf("Seja bem-vindo(a) ao simulador de imobiliária!\n\n"
+        "C. CADASTRAR IMÓVEIS\n"
+		"R. VISUALIZAR IMÓVEIS\n"
+		"U. ATUALIZAR IMÓVEIS\n"
+		"D. DELETAR IMÓVEIS\n"
+		"S. SAIR\n\n");
         scanf("%c%*c", &crud);
 
         switch (crud) {
@@ -241,7 +206,7 @@ int main(void) {
 
         case 'u':
         case 'U': //update
-            SelecaodeImovelU(); //"Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
+            printf("Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
             scanf("%*c%c", &tipoImovel);
             switch (tipoImovel) {
             case 't': //terreno
@@ -375,7 +340,7 @@ int main(void) {
         //FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
             case 'd': //delete
             case 'D':
-                DeletarImovel(); //"Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
+                printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
                 scanf("%*c%c", &tipoImovel);
                 switch (tipoImovel) {
                 case 't': //terreno
