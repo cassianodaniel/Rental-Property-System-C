@@ -47,7 +47,9 @@ typedef struct {
 
 } tterreno;
 
+
 int main(void) {
+
     setlocale(LC_ALL, "Portuguese");
     //int ativo = 1;
 	char crud = '.', tipoImovel; //crud = create, read, update and delete
@@ -87,7 +89,7 @@ int main(void) {
                    "C. CASA\n"
                    "A. APARTAMENTO\n");
 
-            scanf("%*c%c", &tipoImovel);
+            scanf("%c", &tipoImovel);
 
             switch (tipoImovel){
 
@@ -207,7 +209,7 @@ int main(void) {
         case 'u':
         case 'U': //update
             printf("Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-            scanf("%*c%c", &tipoImovel);
+            scanf("%c%*c", &tipoImovel);
             switch (tipoImovel) {
             case 't': //terreno
             case 'T':
@@ -341,7 +343,7 @@ int main(void) {
             case 'd': //delete
             case 'D':
                 printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
-                scanf("%*c%c", &tipoImovel);
+                scanf("%c%*c", &tipoImovel);
                 switch (tipoImovel) {
                 case 't': //terreno
                 case 'T':
@@ -408,7 +410,34 @@ int main(void) {
                 }
             }
         }
-	}
+
+FILE *fp;
+fp = fopen("file1.txt", "r");
+if (!fp){
+        puts("Erro ao abrir FP.");
+        return 1;
+    }
+
+FILE *fp2;
+fp2 = fopen("file2.txt", "w");
+if (!fp2){
+        puts("Erro ao abrir FP2");
+        return 1;
+    }
+
+void copiarConteudo(){
+
+char cofre[10000];
+while (fgets(cofre, 10000, fp) != NULL){
+    fprintf(cofre, fp2);}
+}
+
+copiarConteudo(fp, fp2);
+fclose(fp);
+fclose(fp2);
+
+return 0;}// final da main
+
 
 /*
 void ListaImoveis(){
