@@ -711,32 +711,67 @@ int main(void) {
             }
         }
 
+
 FILE *fp;
-fp = fopen("file1.txt", "r");
+fp = fopen("file1.txt", "a");
 if (!fp){
         puts("Erro ao abrir FP.");
         return 1;
     }
 
-FILE *fp2;
-fp2 = fopen("file2.txt", "w");
-if (!fp2){
-        puts("Erro ao abrir FP2");
-        return 1;
-    }
 
-void copiarConteudo(){
+    for(int i = 0; i < casas[i].titulo[0] == '\0' ; i++){
+            fprintf(fp, "%s\n", casas[i].aouv);
+            fprintf(fp, "%s\n", casas[i].titulo);
+            fprintf(fp, "%d\n", casas[i].areaTerreno);
+            fprintf(fp, "%d\n", casas[i].areaConstruida);
+            fprintf(fp, "%d\n", casas[i].numQuartos);
+            fprintf(fp, "%d\n", casas[i].numPavimentos);
+            fprintf(fp, "%d\n", casas[i].valor);
+            fprintf(fp, "%s\n", casas[i].ativo);
+            fprintf(fp, "%s\n", casas[i].endereco.rua);
+            fprintf(fp, "%s\n", casas[i].endereco.num);
+            fprintf(fp, "%s\n", casas[i].endereco.bairro);
+            fprintf(fp, "%s\n", casas[i].endereco.cidade);
+            fprintf(fp, "%s\n", casas[i].endereco.cep);
+            fprintf(fp, "%s\n", casas[i].endereco.ativo);
+        }
 
-char cofre[10000];
-while (fgets(cofre, 10000, fp) != NULL){
-    fprintf(cofre, fp2);}
-}
 
-copiarConteudo(fp, fp2);
+
+        for(int i = 0; i < apts[i].titulo[0] == '\0'; i++){
+            fprintf(fp, "%s\n", apts[i].aouv);
+            fprintf(fp, "%s\n", apts[i].titulo);
+            fprintf(fp, "%d\n", apts[i].area);
+            fprintf(fp, "%d\n", apts[i].valor);
+            fprintf(fp, "%s\n", apts[i].ativo);
+            fprintf(fp, "%s\n", apts[i].endereco.rua);
+            fprintf(fp, "%d\n", apts[i].endereco.num);
+            fprintf(fp, "%s\n", apts[i].endereco.bairro);
+            fprintf(fp, "%s\n", apts[i].endereco.cidade);
+            fprintf(fp, "%s\n", apts[i].endereco.cep);
+            fprintf(fp, "%s\n", apts[i].endereco.ativo);
+        }
+
+
+
+        for(int i = 0; i < terrenos[i].titulo[0] == '\0' ; i++){
+            fprintf(fp, "%s\n", terrenos[i].titulo);
+            fprintf(fp, "%s\n", terrenos[i].aouv);
+            fprintf(fp, "%s\n", terrenos[i].valor);
+            fprintf(fp, "%d\n", terrenos[i].area);
+            fprintf(fp, "%s\n", terrenos[i].ativo);
+            fprintf(fp, "%s\n", terrenos[i].endereco.rua);
+            fprintf(fp, "%d\n", terrenos[i].endereco.num);
+            fprintf(fp, "%s\n", terrenos[i].endereco.bairro);
+            fprintf(fp, "%s\n", terrenos[i].endereco.cidade);
+            fprintf(fp, "%s\n", terrenos[i].endereco.cep);
+            fprintf(fp, "%s\n", terrenos[i].endereco.ativo);
+        }
+
 fclose(fp);
-fclose(fp2);
 
-return 0;}// final da main
+return 0;} // final da main
 /*
 char cat = '.';
 scanf("%c%*c", cat);
