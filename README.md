@@ -15,7 +15,7 @@ Além disso, o sistema deve conter as seguintes funções:
 • Uma função que consulta todos os imóveis disponíveis; [X]
 • Uma função que busca um imóvel por título; 
 • Uma função que busca um imóvel por bairro;
-• Uma função que busca os imóveis acima de um determinado valor.
+• Uma função que busca os imóveis acima de um determinado valor. [X]
 • Uma função que retorna todos os imóveis disponíveis para vender por tipo (casa, apartamento, terreno); [X]
 • Uma função que retorna todos os imóveis disponíveis para alugar por tipo (casa, apartamento, terreno); [X]
 • Uma função para remover um determinado imóvel.[X]
