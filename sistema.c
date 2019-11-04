@@ -47,6 +47,64 @@ typedef struct {
 
 } tterreno;
 
+void ImprimeTerreno(tterreno *pTerreno){
+    printf("\t\t%s\n", pTerreno->titulo);
+    printf("\tÁrea: %d\n", pTerreno->area);
+    printf("\tValor: %d\n", pTerreno->valor);
+    if(pTerreno->aouv == 'a'){
+    printf("\tDisponível para aluguel\n");
+    }else{
+    printf("\tDisponível para venda\n");
+    }
+    printf("\n\tEndereço:\n");
+    printf("\tRua: %s", pTerreno->endereco.rua);
+    printf("\tNúmero: %d\n\n", pTerreno->endereco.num);
+    printf("\tCidade: %s", pTerreno->endereco.cidade);
+    printf("\tBairro: %s", pTerreno->endereco.bairro);
+    printf("\tCEP: %s\n\n", pTerreno->endereco.cep);
+}
+
+void ImprimeCasa(tcasa *pCasa){
+    printf("\t\t%s\n", pCasa->titulo);
+    printf("\tValor: %d\n", pCasa->valor);
+    printf("\tÁrea do terreno: %d\n", pCasa->areaTerreno);
+    printf("\tÁrea construída: %d\n", pCasa->areaConstruida);
+    printf("\tNúmero de quartos: %d\n", pCasa->numQuartos);
+    printf("\tNúmero de pavimentos: %d\n", pCasa->numPavimentos);
+    if(pCasa->aouv == 'a'){
+    printf("\tDisponível para aluguel\n");
+    }else{
+    printf("\tDisponível para venda\n");
+    }
+    printf("\n\tEndereço:\n");
+    printf("\tRua: %s", pCasa->endereco.rua);
+    printf("\tNúmero: %d\n\n", pCasa->endereco.num);
+    printf("\tCidade: %s", pCasa->endereco.cidade);
+    printf("\tBairro: %s", pCasa->endereco.bairro);
+    printf("\tCEP: %s\n\n", pCasa->endereco.cep);
+}
+
+void ImprimeApt(tapt *pApt){
+    printf("\t\t%s\n", pApt->titulo);
+    printf("\tValor: %d\n", pApt->valor);
+    printf("\tValor do condomínio: %d\n", pApt->valorCond);
+    printf("\tÁrea: %d\n", pApt->area);
+    printf("\tAndar: %d\n", pApt->andar);
+    printf("\tNúmero de quartos: %d\n", pApt->numQuartos);
+    printf("\tNúmero de vagas na garagem: %d\n", pApt->numVagasG);
+    printf("\tPosição do apartamento: %s", pApt->posicao);
+    if(pApt->aouv == 'a'){
+    printf("\tDisponível para aluguel\n");
+    }else{
+    printf("\tDisponível para venda\n");
+    }
+    printf("\n\tEndereço:\n");
+    printf("\tRua: %s", pApt->endereco.rua);
+    printf("\tNúmero: %d\n\n", pApt->endereco.num);
+    printf("\tCidade: %s", pApt->endereco.cidade);
+    printf("\tBairro: %s", pApt->endereco.bairro);
+    printf("\tCEP: %s\n\n", pApt->endereco.cep);
+}
 
 int main(void) {
 
@@ -353,7 +411,6 @@ int main(void) {
             printf("4) Buscar um imóvel por título\n");
             printf("5) Buscar um imóvel por bairro\n");
 
-
             scanf("%d%*c", &tipoRead);
 
             system("cls");
@@ -395,13 +452,12 @@ int main(void) {
                     }
                     switch(tipoRead){
                     case 1:
-                        printf("(%d)\t%s\n", i + 1, terrenos[j].titulo);
+                        ImprimeTerreno(&terrenos[j]);
                     break;
 
                     case 2:
                         if(terrenos[j].valor >= valorBuscado){
-                            printf("(%d)\t%s\n", i + 1, terrenos[j].titulo);
-                            printf("Valor: %d\n\n", terrenos[j].valor);
+                            ImprimeTerreno(&terrenos[j]);
                         }else{
                             i--;
                         }
@@ -409,7 +465,7 @@ int main(void) {
 
                     case 3:
                         if(terrenos[j].aouv == alugOuVenda){
-                            printf("(%d)\t%s\n", i + 1, terrenos[j].titulo);
+                            ImprimeTerreno(&terrenos[j]);
                         }else{
                             i--;
                         }
@@ -425,7 +481,7 @@ int main(void) {
                         }
 
                         if(igual[0]){
-                            printf("\t%s", terrenos[j].titulo);
+                            ImprimeTerreno(&terrenos[j]);
                         }
 
                     break;
@@ -440,7 +496,7 @@ int main(void) {
                         }
 
                         if(igual[0]){
-                            printf("\t%s", terrenos[j].titulo);
+                            ImprimeTerreno(&terrenos[j]);
                         }
 
                     break;
@@ -462,13 +518,12 @@ int main(void) {
                     }
                     switch(tipoRead){
                     case 1:
-                        printf("(%d)\t%s\n", i + 1, casas[j].titulo);
+                        ImprimeCasa(&casas[j]);
                     break;
 
                     case 2:
                         if(casas[j].valor >= valorBuscado){
-                            printf("(%d)\t%s\n", i + 1, casas[j].titulo);
-                            printf("Valor: %d\n\n", casas[j].valor);
+                            ImprimeCasa(&casas[j]);
                         }else{
                             i--;
                         }
@@ -476,7 +531,7 @@ int main(void) {
 
                     case 3:
                         if(casas[j].aouv == alugOuVenda){
-                            printf("(%d)\t%s\n", i + 1, casas[j].titulo);
+                            ImprimeCasa(&casas[j]);
                         }else{
                             i--;
                         }
@@ -492,7 +547,7 @@ int main(void) {
                         }
 
                         if(igual[1]){
-                            printf("\t%s", casas[j].titulo);
+                            ImprimeCasa(&casas[j]);
                         }
 
                     break;
@@ -507,7 +562,7 @@ int main(void) {
                         }
 
                         if(igual[1]){
-                            printf("\t%s", casas[j].titulo);
+                            ImprimeCasa(&casas[j]);
                         }
 
                     break;
@@ -530,13 +585,12 @@ int main(void) {
                     }
                     switch(tipoRead){
                     case 1:
-                        printf("(%d)\t%s\n", i + 1, apts[j].titulo);
+                        ImprimeApt(&apts[j]);
                     break;
 
                     case 2:
                         if(apts[j].valor >= valorBuscado){
-                            printf("(%d)\t%s\n", i + 1, apts[j].titulo);
-                            printf("Valor: %d\n\n", apts[j].valor);
+                            ImprimeApt(&apts[j]);
                         }else{
                             i--;
                         }
@@ -544,7 +598,7 @@ int main(void) {
 
                     case 3:
                         if(apts[j].aouv == alugOuVenda){
-                            printf("(%d)\t%s\n", i + 1, apts[j].titulo);
+                            ImprimeApt(&apts[j]);
                         }else{
                             i--;
                         }
@@ -560,7 +614,7 @@ int main(void) {
                         }
 
                         if(igual[2]){
-                            printf("\t%s", apts[j].titulo);
+                            ImprimeApt(&apts[j]);
                         }
 
                     break;
@@ -575,7 +629,7 @@ int main(void) {
                         }
 
                         if(igual[2]){
-                            printf("\t%s", apts[j].titulo);
+                            ImprimeApt(&apts[j]);
                         }
 
                     break;
@@ -671,67 +725,18 @@ if (!fp2){
         return 1;
     }
 
-void copiarConteudoCasas(){
-    for(int i = 0; i < casas[i].titulo[0] == '\0' ; i++){
-            fprintf(fp, "%s\n", casas[i].aouv);
-            fprintf(fp, "%s\n", casas[i].titulo);
-            fprintf(fp, "%d\n", casas[i].areaTerreno);
-            fprintf(fp, "%d\n", casas[i].areaConstruida);
-            fprintf(fp, "%d\n", casas[i].numQuartos);
-            fprintf(fp, "%d\n", casas[i].numPavimentos);
-            fprintf(fp, "%d\n", casas[i].valor);
-            fprintf(fp, "%s\n", casas[i].ativo);
-            fprintf(fp, "%s\n", casas[i].endereco.rua);
-            fprintf(fp, "%s\n", casas[i].endereco.num);
-            fprintf(fp, "%s\n", casas[i].endereco.bairro);
-            fprintf(fp, "%s\n", casas[i].endereco.cidade);
-            fprintf(fp, "%s\n", casas[i].endereco.cep);
-            fprintf(fp, "%s\n", casas[i].endereco.ativo);
-        }
+void copiarConteudo(){
+
+char cofre[10000];
+while (fgets(cofre, 10000, fp) != NULL){
+    fprintf(cofre, fp2);}
 }
 
-void copiarConteudoApts(){
-        for(int i = 0; i < apts[i].titulo[0] == '\0'; i++){
-            fprintf(fp, "%s\n", apts[i].aouv);
-            fprintf(fp, "%s\n", apts[i].titulo);
-            fprintf(fp, "%d\n", apts[i].area);
-            fprintf(fp, "%d\n", apts[i].valor);
-            fprintf(fp, "%s\n", apts[i].ativo);
-            fprintf(fp, "%s\n", apts[i].endereco.rua);
-            fprintf(fp, "%d\n", apts[i].endereco.num);
-            fprintf(fp, "%s\n", apts[i].endereco.bairro);
-            fprintf(fp, "%s\n", apts[i].endereco.cidade);
-            fprintf(fp, "%s\n", apts[i].endereco.cep);
-            fprintf(fp, "%s\n", apts[i].endereco.ativo);
-        }
-}
-
-void copiarConteudoTerrenos(){
-        for(int i = 0; i < terrenos[i].titulo[0] == '\0' ; i++){
-            fprintf(fp, "%s\n", terrenos[i].titulo);
-            fprintf(fp, "%s\n", terrenos[i].aouv);
-            fprintf(fp, "%s\n", terrenos[i].valor);
-            fprintf(fp, "%d\n", terrenos[i].area);
-            fprintf(fp, "%s\n", terrenos[i].ativo);
-            fprintf(fp, "%s\n", terrenos[i].endereco.rua);
-            fprintf(fp, "%d\n", terrenos[i].endereco.num);
-            fprintf(fp, "%s\n", terrenos[i].endereco.bairro);
-            fprintf(fp, "%s\n", terrenos[i].endereco.cidade);
-            fprintf(fp, "%s\n", terrenos[i].endereco.cep);
-            fprintf(fp, "%s\n", terrenos[i].endereco.ativo);
-        }
-}
-
-copiarConteudoTerrenos();
-copiarConteudoCasas();
-copiarConteudoApts();
-
+copiarConteudo(fp, fp2);
 fclose(fp);
 fclose(fp2);
 
-return 0;
-}// final da main
-
+return 0;}// final da main
 /*
 char cat = '.';
 scanf("%c%*c", cat);
