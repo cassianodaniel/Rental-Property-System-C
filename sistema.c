@@ -440,6 +440,88 @@ return 0;}// final da main
 
 
 /*
+char cat = '.';
+scanf("%c%*c", cat);
+
+void vendertipo(){ // Uma função que retorna todos os imóveis disponíveis para vender por tipo (casa, apartamento, terreno);
+    switch(cat){
+
+        case 'c':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(casas[i].aouv == 'v'){
+                printf(casas[i].titulo);
+                }
+            }
+        break;
+        }
+
+        case 'a':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(apts[i].aouv == 'v'){
+                printf(apts[i].titulo);
+                }
+            }
+        break;
+        }
+
+        case 't':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(terrenos[i].aouv == 'v'){
+                printf(terrenos[i].titulo);
+                }
+            }
+        break;
+        }
+
+        default:
+        puts("Opção inválida");
+
+    return;
+    }
+}
+
+void alugartipo(){ // Uma função que retorna todos os imóveis disponíveis para alugar por tipo (casa, apartamento, terreno);
+    switch(cat){
+
+        case 'c':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(casas[i].aouv == 'a'){
+                printf(casas[i].titulo);
+                }
+            }
+        break;
+        }
+
+        case 'a':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(apts[i].aouv == 'a'){
+                printf(apts[i].titulo);
+                }
+            }
+        break;
+        }
+
+        case 't':{
+        for(int i = 0; i<MAX_ARRAY; i++){
+            if(terrenos[i].aouv == 'a'){
+                printf(terrenos[i].titulo);
+                }
+            }
+        break;
+        }
+
+        default:
+        puts("Opção inválida");
+
+    return;
+    }
+}*/
+
+
+//FUNCAO LISTA DE IMÓVEIS DISPONÍVEIS
+
+
+/*
 void ListaImoveis(){
 puts("Esta é a lista de imóveis cadastrados em nossa imobiliária");
 int auxt = 2;
