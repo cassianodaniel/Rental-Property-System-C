@@ -58,9 +58,10 @@ int main(void) {
 	tcasa casas[MAX_ARRAY];
 	tapt apts[MAX_ARRAY];
 	int i, selecaoUpdate;
+	char tituloBuscado[100];
 
 	//for para ativar todos os imóveis
-    int j;
+    int j, k, igual[3];
     for (j = 0; j< MAX_ARRAY; j++){
     terrenos[j].ativo = 0;
     casas[j].ativo = 0;
@@ -349,6 +350,9 @@ int main(void) {
             printf("1) Mostrar todos os imóveis\n");
             printf("2) Mostrar os imóveis a partir de um preço\n");
             printf("3) Mostrar os imóveis para aluguel ou para venda\n");
+            printf("4) Buscar um imóvel por título\n");
+            printf("5) Buscar um imóvel por bairro\n");
+
 
             scanf("%d%*c", &tipoRead);
 
@@ -356,13 +360,23 @@ int main(void) {
 
             switch(tipoRead){
             case 2:
-                printf("Selecione o valor mínimo dos imóveis buscados:");
+                printf("Selecione o valor mínimo dos imóveis buscados: ");
                 scanf("%d%*c", &valorBuscado);
             break;
 
             case 3:
                 printf("Selecione se você deseja ver os imóveis disponíveis para aluguel ou para venda (a ou v):");
-                scanf("%c", &alugOuVenda);
+                scanf("%c%*c", &alugOuVenda);
+            break;
+
+            case 4:
+                printf("Digite o título do imóvel que você deseja procurar:\n");
+                fgets(tituloBuscado, 100, stdin);
+            break;
+
+            case 5:
+                printf("Digite o título do bairro que você deseja procurar os imóveis:\n");
+                fgets(tituloBuscado, 100, stdin);
             break;
             }
 
@@ -393,12 +407,43 @@ int main(void) {
                         }
                     break;
 
-                case 3:
-                    if(terrenos[j].aouv == alugOuVenda){
-                        printf("(%d)\t%s\n", i + 1, terrenos[j].titulo);
-                    }else{
-                        i--;
-                    }
+                    case 3:
+                        if(terrenos[j].aouv == alugOuVenda){
+                            printf("(%d)\t%s\n", i + 1, terrenos[j].titulo);
+                        }else{
+                            i--;
+                        }
+                    break;
+
+                    case 4:
+                        igual[0] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != terrenos[j].titulo[k]){
+                                igual[0] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[0]){
+                            printf("\t%s", terrenos[j].titulo);
+                        }
+
+                    break;
+
+                    case 5:
+                        igual[0] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != terrenos[j].endereco.bairro[k]){
+                                igual[0] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[0]){
+                            printf("\t%s", terrenos[j].titulo);
+                        }
+
+                    break;
                 }
             }
 
@@ -435,6 +480,38 @@ int main(void) {
                         }else{
                             i--;
                         }
+                    break;
+
+                    case 4:
+                        igual[1] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != casas[j].titulo[k]){
+                                igual[1] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[1]){
+                            printf("\t%s", casas[j].titulo);
+                        }
+
+                    break;
+
+                    case 5:
+                        igual[1] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != casas[j].endereco.bairro[k]){
+                                igual[1] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[1]){
+                            printf("\t%s", casas[j].titulo);
+                        }
+
+                    break;
+
                     }
                 }
 
@@ -471,6 +548,38 @@ int main(void) {
                         }else{
                             i--;
                         }
+                    break;
+
+                    case 4:
+                        igual[2] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != apts[j].titulo[k]){
+                                igual[2] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[2]){
+                            printf("\t%s", apts[j].titulo);
+                        }
+
+                    break;
+
+                    case 5:
+                        igual[2] = 1;
+                        for(k = 0; tituloBuscado[k] != '\0'; k++){
+                            if(tituloBuscado[k] != apts[j].endereco.bairro[k]){
+                                igual[2] = 0;
+                                break;
+                            }
+                        }
+
+                        if(igual[2]){
+                            printf("\t%s", apts[j].titulo);
+                        }
+
+                    break;
+
                     }
                 }
 
@@ -575,7 +684,6 @@ fclose(fp2);
 
 return 0;}// final da main
 /*
-
 char cat = '.';
 scanf("%c%*c", cat);
 void vendertipo(){ // Uma função que retorna todos os imóveis disponíveis para vender por tipo (casa, apartamento, terreno);
