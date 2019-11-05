@@ -110,12 +110,12 @@ int main(void) {
 
     setlocale(LC_ALL, "Portuguese");
     //int ativo = 1;
-	char crud = '.', tipoImovel; //crud = create, read, update and delete
+	char tipoImovel; //crud = create, read, update and delete
 	/*declaração de arrays com suas respectivas variáveis a seguir.*/
 	tterreno terrenos[MAX_ARRAY];
 	tcasa casas[MAX_ARRAY];
 	tapt apts[MAX_ARRAY];
-	int i, selecaoUpdate;
+	int i, selecaoUpdate, crud = -1;
 	char tituloBuscado[100];
 
 	//for para ativar todos os imóveis
@@ -126,22 +126,21 @@ int main(void) {
     apts[j].ativo = 0;
     }
 
-	while(crud != 's' && crud != 'S'){
+	while(crud != 5){
 
         printf("Seja bem-vindo(a) ao simulador de imobiliária!\n\n"
-        "C. CADASTRAR IMÓVEIS\n"
-		"R. VISUALIZAR IMÓVEIS\n"
-		"U. ATUALIZAR IMÓVEIS\n"
-		"D. DELETAR IMÓVEIS\n"
-		"S. SAIR\n\n");
-        scanf("%c%*c", &crud);
+        "1) CADASTRAR IMÓVEIS\n"
+		"2) VISUALIZAR IMÓVEIS\n"
+		"3) ATUALIZAR IMÓVEIS\n"
+		"4) DELETAR IMÓVEIS\n"
+		"5) SAIR\n\n");
+        scanf("%d%*c", &crud);
 
         switch (crud) {
 
                 //CREATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-            case 'c':
-            case 'C': //create
+            case 1: //create
 
             printf("O que você deseja cadastrar?\n\n"
                    "T. TERRENO\n"
@@ -265,8 +264,7 @@ int main(void) {
 
             //UPDATE-----------------------------------------------------------------------------------------------------------------------------------------------------------
 
-        case 'u':
-        case 'U': //update
+        case 3: //update
             printf("Voce deseja atualizar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
             scanf("%c%*c", &tipoImovel);
             switch (tipoImovel) {
@@ -401,8 +399,8 @@ int main(void) {
         char tipoRead;
         int valorBuscado;
         char alugOuVenda;
-        case 'r':
-        case 'R':
+       
+        case 2:
 
             printf("\tSelecione de que forma você quer ver os imoveis cadastrados:\n");
             printf("1) Mostrar todos os imóveis\n");
@@ -640,8 +638,7 @@ int main(void) {
             break;
 
         //FUNÇÃO PARA REMOVER UM DETERMINADO IMÓVEL
-            case 'd': //delete
-            case 'D':
+            case 4:
                 printf("Voce deseja deletar um terreno(t), uma casa(c) ou um apartamento(a)?\n");
                 scanf("%c%*c", &tipoImovel);
                 switch (tipoImovel) {
