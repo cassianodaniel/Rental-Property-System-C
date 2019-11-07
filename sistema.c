@@ -45,8 +45,8 @@ typedef struct {
 } tterreno;
 
 extern void LeTerreno(tterreno *terreno);
-extern void LeCasa(tcasa *casa);
-extern void LeApt(tapt *apt);
+//extern void LeCasa(tcasa *casa);
+//extern void LeApt(tapt *apt);
 
 void ImprimeTerreno(tterreno *pTerreno){
     printf("\t\t%s\n", pTerreno->titulo);
@@ -138,18 +138,20 @@ int main(void) {
         k = 0;
             if (feof(fp))
                 break;
-            fscanf("%d", &tipoArq);
+            fscanf(fp, "%d", &tipoArq);
+            fscanf(fp, "%*c");
             switch(tipoArq){
             case 1:
                 LeTerreno(&terrenos[i]);
                 i++;
+
             break;
             case 2:
-                LeCasa(&casas[j]);
+               // LeCasa(&casas[j]);
                 j++;
             break;
             case 3:
-                LeApt(&apts[k]);
+               // LeApt(&apts[k]);
                 k++;
             }
         }
@@ -752,7 +754,7 @@ if (fp2 == NULL){
             if(!apts[i].ativo)
             continue;
 
-            fprintf(fp2, "3");
+            fprintf(fp2, "3\n");
             fprintf(fp2, "%c\n", casas[i].aouv);
             fprintf(fp2, "%s", casas[i].titulo);
             fprintf(fp2, "%d\n", casas[i].areaTerreno);
@@ -773,7 +775,7 @@ if (fp2 == NULL){
             if(!casas[i].ativo)
             continue;
 
-            fprintf(fp2, "2");
+            fprintf(fp2, "2\n");
             fprintf(fp2, "%s", apts[i].aouv);
             fprintf(fp2, "%s", apts[i].titulo);
             fprintf(fp2, "%d\n", apts[i].area);
@@ -790,10 +792,10 @@ if (fp2 == NULL){
             if(!terrenos[i].ativo)
             continue;
 
-            fprintf(fp2, "1");
+            fprintf(fp2, "1\n");
             fprintf(fp2, "%s", terrenos[i].titulo);
-            fprintf(fp2, "%s", terrenos[i].aouv);
-            fprintf(fp2, "%s", terrenos[i].valor);
+            fprintf(fp2, "%c\n", terrenos[i].aouv);
+            fprintf(fp2, "%d\n", terrenos[i].valor);
             fprintf(fp2, "%d\n", terrenos[i].area);
             fprintf(fp2, "%s", terrenos[i].endereco.rua);
             fprintf(fp2, "%d\n", terrenos[i].endereco.num);
@@ -807,3 +809,22 @@ if (fp2 == NULL){
 
     return 0;
 } // final da main
+
+void LeTerreno(tterreno* terreno){
+    FILE *fp;
+    fp = fopen("file1.txt", "r");
+        fgets(terreno->titulo, 100, fp);
+        fscanf(fp, "%c", terreno->aouv);
+        fscanf(fp, "%*c");
+        fscanf(fp, "%d", terreno->valor);
+        fscanf(fp, "%*c");
+        fscanf(fp, "%d", terreno->area);
+        fscanf(fp, "%*c");
+        fgets(terreno->endereco.rua, 100, fp);
+        fscanf(fp, "%d", terreno->endereco.num);
+        fscanf(fp, "%*c");
+        fgets(terreno->endereco.bairro, 100, fp);
+        fgets(terreno->endereco.cidade, 100, fp);
+        fgets(terreno->endereco.cep, 100, fp);
+    fclose(fp);
+}
