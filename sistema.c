@@ -4,8 +4,6 @@
 #include <string.h>
 #define MAX_ARRAY 100
 
-extern void LeTerreno(tterreno *terreno);
-
 typedef struct {
 	char rua[MAX_ARRAY];
 	int num;
@@ -45,6 +43,10 @@ typedef struct {
 	tendereco endereco;
 
 } tterreno;
+
+extern void LeTerreno(tterreno *terreno);
+extern void LeCasa(tcasa *casa);
+extern void LeApt(tapt *apt);
 
 void ImprimeTerreno(tterreno *pTerreno){
     printf("\t\t%s\n", pTerreno->titulo);
@@ -124,7 +126,8 @@ int main(void) {
     casas[j].ativo = 0;
     apts[j].ativo = 0;
     }
-    
+
+    FILE *fp;
     fp = fopen("file1.txt", "r");
     if (!fp)
         puts("Erro ao abrir o arquivo");
@@ -737,73 +740,70 @@ int main(void) {
         }
 
 
-FILE *fp;
-fp = fopen("file1.txt", "w");
-if (fp == NULL){
+FILE *fp2;
+fp2 = fopen("file1.txt", "w");
+if (fp2 == NULL){
         puts("Erro ao abrir FP.");
         return 1;
     }
 
     for(int i = 0; casas[i].titulo[0] != '\0' ; i++){
-            
+
             if(!apts[i].ativo)
             continue;
-            
-            fprintf(fp, "3");
-            fprintf(fp, "%c\n", casas[i].aouv);
-            fprintf(fp, "%s", casas[i].titulo);
-            fprintf(fp, "%d\n", casas[i].areaTerreno);
-            fprintf(fp, "%d\n", casas[i].areaConstruida);
-            fprintf(fp, "%d\n", casas[i].numQuartos);
-            fprintf(fp, "%d\n", casas[i].numPavimentos);
-            fprintf(fp, "%d\n", casas[i].valor);
-            fprintf(fp, "%s", casas[i].endereco.rua);
-            fprintf(fp, "%d\n", casas[i].endereco.num);
-            fprintf(fp, "%s", casas[i].endereco.bairro);
-            fprintf(fp, "%s", casas[i].endereco.cidade);
-            fprintf(fp, "%s", casas[i].endereco.cep);
 
+            fprintf(fp2, "3");
+            fprintf(fp2, "%c\n", casas[i].aouv);
+            fprintf(fp2, "%s", casas[i].titulo);
+            fprintf(fp2, "%d\n", casas[i].areaTerreno);
+            fprintf(fp2, "%d\n", casas[i].areaConstruida);
+            fprintf(fp2, "%d\n", casas[i].numQuartos);
+            fprintf(fp2, "%d\n", casas[i].numPavimentos);
+            fprintf(fp2, "%d\n", casas[i].valor);
+            fprintf(fp2, "%s", casas[i].endereco.rua);
+            fprintf(fp2, "%d\n", casas[i].endereco.num);
+            fprintf(fp2, "%s", casas[i].endereco.bairro);
+            fprintf(fp2, "%s", casas[i].endereco.cidade);
+            fprintf(fp2, "%s", casas[i].endereco.cep);
 
         }
-
 
         for(int i = 0; apts[i].titulo[0] != '\0'; i++){
-                
+
             if(!casas[i].ativo)
-            continue;    
-            
-            fprintf(fp, "2");
-            fprintf(fp, "%s", apts[i].aouv);
-            fprintf(fp, "%s", apts[i].titulo);
-            fprintf(fp, "%d\n", apts[i].area);
-            fprintf(fp, "%d\n", apts[i].valor);
-            fprintf(fp, "%s", apts[i].endereco.rua);
-            fprintf(fp, "%d\n", apts[i].endereco.num);
-            fprintf(fp, "%s", apts[i].endereco.bairro);
-            fprintf(fp, "%s", apts[i].endereco.cidade);
-            fprintf(fp, "%s", apts[i].endereco.cep);
+            continue;
+
+            fprintf(fp2, "2");
+            fprintf(fp2, "%s", apts[i].aouv);
+            fprintf(fp2, "%s", apts[i].titulo);
+            fprintf(fp2, "%d\n", apts[i].area);
+            fprintf(fp2, "%d\n", apts[i].valor);
+            fprintf(fp2, "%s", apts[i].endereco.rua);
+            fprintf(fp2, "%d\n", apts[i].endereco.num);
+            fprintf(fp2, "%s", apts[i].endereco.bairro);
+            fprintf(fp2, "%s", apts[i].endereco.cidade);
+            fprintf(fp2, "%s", apts[i].endereco.cep);
         }
-
-
 
         for(int i = 0; terrenos[i].titulo[0] != '\0' ; i++){
-                    
+
             if(!terrenos[i].ativo)
             continue;
-        
-            fprintf(fp, "1");
-            fprintf(fp, "%s", terrenos[i].titulo);
-            fprintf(fp, "%s", terrenos[i].aouv);
-            fprintf(fp, "%s", terrenos[i].valor);
-            fprintf(fp, "%d\n", terrenos[i].area);
-            fprintf(fp, "%s", terrenos[i].endereco.rua);
-            fprintf(fp, "%d\n", terrenos[i].endereco.num);
-            fprintf(fp, "%s", terrenos[i].endereco.bairro);
-            fprintf(fp, "%s", terrenos[i].endereco.cidade);
-            fprintf(fp, "%s", terrenos[i].endereco.cep);
-  
+
+            fprintf(fp2, "1");
+            fprintf(fp2, "%s", terrenos[i].titulo);
+            fprintf(fp2, "%s", terrenos[i].aouv);
+            fprintf(fp2, "%s", terrenos[i].valor);
+            fprintf(fp2, "%d\n", terrenos[i].area);
+            fprintf(fp2, "%s", terrenos[i].endereco.rua);
+            fprintf(fp2, "%d\n", terrenos[i].endereco.num);
+            fprintf(fp2, "%s", terrenos[i].endereco.bairro);
+            fprintf(fp2, "%s", terrenos[i].endereco.cidade);
+            fprintf(fp2, "%s", terrenos[i].endereco.cep);
+
         }
 
-fclose(fp);
+    fclose(fp2);
 
-return 0;} // final da main
+    return 0;
+} // final da main
