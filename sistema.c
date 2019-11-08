@@ -44,7 +44,7 @@ typedef struct {
 
 } tterreno;
 
-extern void LeTerreno(tterreno *terreno);
+extern void LeArquivo(tterreno *terreno[]);
 //extern void LeCasa(tcasa *casa);
 //extern void LeApt(tapt *apt);
 
@@ -127,60 +127,7 @@ int main(void) {
     apts[j].ativo = 0;
     }
 
-    FILE *fp;
-    fp = fopen("file1.txt", "r");
-    if (!fp)
-        puts("Erro ao abrir o arquivo");
-    else{
-        while(1){
-        i = 0;
-        j = 0;
-        k = 0;
-            if (feof(fp))
-                break;
-            fscanf(fp, "%d", &tipoArq);
-            fscanf(fp, "%*c");
-            switch(tipoArq){
-            case 1:
-                /*fgets(terreno->titulo, 100, fp);
-                fscanf(fp, "%c", terreno->aouv);
-                fscanf(fp, "%*c");
-                fscanf(fp, "%d", terreno->valor);
-                fscanf(fp, "%*c");
-                fscanf(fp, "%d", terreno->area);
-                fscanf(fp, "%*c");
-                fgets(terreno->endereco.rua, 100, fp);
-                fscanf(fp, "%d", terreno->endereco.num);
-                fscanf(fp, "%*c");
-                fgets(terreno->endereco.bairro, 100, fp);
-                fgets(terreno->endereco.cidade, 100, fp);
-                fgets(terreno->endereco.cep, 100, fp);*/
-                fgets(terrenos[i].titulo, 100, fp);
-                fscanf(fp, "%s", &terrenos[i].aouv);
-                fscanf(fp, "%d", &terrenos[i].valor);
-                fscanf(fp, "%*c");
-                fscanf(fp, "%d", &terrenos[i].area);
-                fscanf(fp, "%*c");
-                fgets(terrenos[i].endereco.rua, 100, fp);
-                fscanf(fp, "%d", &terrenos[i].endereco.num);
-                fscanf(fp, "%*c");
-                fgets(terrenos[i].endereco.bairro, 100, fp);
-                fgets(terrenos[i].endereco.cidade, 100, fp);
-                fgets(terrenos[i].endereco.cep, 100, fp);
-                i++;
-
-            break;
-            case 2:
-               // LeCasa(&casas[j]);
-                j++;
-            break;
-            case 3:
-               // LeApt(&apts[k]);
-                k++;
-            }
-        }
-    fclose(fp);
-    }
+    LeArquivo(terrenos);
 
 	while(crud != 5){
 
@@ -834,21 +781,60 @@ if (fp2 == NULL){
     return 0;
 } // final da main
 
-/*void LeTerreno(tterreno* terreno){
-    FILE *fp;
+void LeArquivo(tterreno *terreno[]){
+     FILE *fp;
     fp = fopen("file1.txt", "r");
-        fgets(terreno->titulo, 100, fp);
-        fscanf(fp, "%c", terreno->aouv);
-        fscanf(fp, "%*c");
-        fscanf(fp, "%d", terreno->valor);
-        fscanf(fp, "%*c");
-        fscanf(fp, "%d", terreno->area);
-        fscanf(fp, "%*c");
-        fgets(terreno->endereco.rua, 100, fp);
-        fscanf(fp, "%d", terreno->endereco.num);
-        fscanf(fp, "%*c");
-        fgets(terreno->endereco.bairro, 100, fp);
-        fgets(terreno->endereco.cidade, 100, fp);
-        fgets(terreno->endereco.cep, 100, fp);
+    if (!fp)
+        puts("Erro ao abrir o arquivo");
+    else{
+        while(1){
+        int i = 0;
+        int j = 0;
+        int k = 0;
+        int tipoArq;
+            if (feof(fp))
+                break;
+            fscanf(fp, "%d", &tipoArq);
+            fscanf(fp, "%*c");
+            switch(tipoArq){
+            case 1:
+                fgets(terreno[i]->titulo, 100, fp);
+                fscanf(fp, "%c", terreno[i]->aouv);
+                fscanf(fp, "%*c");
+                fscanf(fp, "%d", terreno[i]->valor);
+                fscanf(fp, "%*c");
+                fscanf(fp, "%d", terreno[i]->area);
+                fscanf(fp, "%*c");
+                fgets(terreno[i]->endereco.rua, 100, fp);
+                fscanf(fp, "%d", terreno[i]->endereco.num);
+                fscanf(fp, "%*c");
+                fgets(terreno[i]->endereco.bairro, 100, fp);
+                fgets(terreno[i]->endereco.cidade, 100, fp);
+                fgets(terreno[i]->endereco.cep, 100, fp);
+               /* fgets(terrenos[i].titulo, 100, fp);
+                fscanf(fp, "%s", &terrenos[i].aouv);
+                fscanf(fp, "%d", &terrenos[i].valor);
+                fscanf(fp, "%*c");
+                fscanf(fp, "%d", &terrenos[i].area);
+                fscanf(fp, "%*c");
+                fgets(terrenos[i].endereco.rua, 100, fp);
+                fscanf(fp, "%d", &terrenos[i].endereco.num);
+                fscanf(fp, "%*c");
+                fgets(terrenos[i].endereco.bairro, 100, fp);
+                fgets(terrenos[i].endereco.cidade, 100, fp);
+                fgets(terrenos[i].endereco.cep, 100, fp);*/
+                i++;
+
+            break;
+            case 2:
+               // LeCasa(&casas[j]);
+                j++;
+            break;
+            case 3:
+               // LeApt(&apts[k]);
+                k++;
+            }
+        }
     fclose(fp);
-}*/
+    }
+}
