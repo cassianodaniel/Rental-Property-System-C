@@ -233,13 +233,13 @@ void SalvaArquivo(){
             if(!terrenos[i].ativo)
             continue;
 
-            fprintf(fp2, "1");
+            fprintf(fp2, "1\n");
             fprintf(fp2, "%s", terrenos[i].titulo);
-            fprintf(fp2, "%c", terrenos[i].aouv);
-            fprintf(fp2, "%d", terrenos[i].valor);
-            fprintf(fp2, "%d", terrenos[i].area);
+            fprintf(fp2, "%c\n", terrenos[i].aouv);
+            fprintf(fp2, "%d\n", terrenos[i].valor);
+            fprintf(fp2, "%d\n", terrenos[i].area);
             fprintf(fp2, "%s", terrenos[i].endereco.rua);
-            fprintf(fp2, "%d", terrenos[i].endereco.num);
+            fprintf(fp2, "%d\n", terrenos[i].endereco.num);
             fprintf(fp2, "%s", terrenos[i].endereco.bairro);
             fprintf(fp2, "%s", terrenos[i].endereco.cidade);
             fprintf(fp2, "%s", terrenos[i].endereco.cep);
