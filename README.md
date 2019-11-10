@@ -24,8 +24,8 @@ Além disso, o sistema deve conter as seguintes funções:
 • Uma função para ler a lista em um arquivo. [X]
 
 Utilize vetores. Toda a exibição e busca deve ser realizada na lista, não no arquivo.
-• O programa deve possuir um menu de opções, e deve retornar ao menu após cada opção ser selecionada.
+• O programa deve possuir um menu de opções, e deve retornar ao menu após cada opção ser selecionada. [X]
 • Os imóveis devem ser implementos com registros (struct)[X]
 
-A Lista de imóveis deve ser implementada na forma de um vetor do registro.
-•Todas as operações de cadastro, exibição, busca, remoção, edição, devem ser realizadas no vetor, e não no arquivo.
+A Lista de imóveis deve ser implementada na forma de um vetor do registro. [X]
+•Todas as operações de cadastro, exibição, busca, remoção, edição, devem ser realizadas no vetor, e não no arquivo. [x]
