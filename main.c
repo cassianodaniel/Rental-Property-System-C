@@ -832,23 +832,22 @@ if (fp2 == NULL){
     fclose(fp2);
 
     return 0;
-} // final da main
+}
 
-/*void LeTerreno(tterreno* terreno){
-    FILE *fp;
-    fp = fopen("file1.txt", "r");
-        fgets(terreno->titulo, 100, fp);
-        fscanf(fp, "%c", terreno->aouv);
-        fscanf(fp, "%*c");
-        fscanf(fp, "%d", terreno->valor);
-        fscanf(fp, "%*c");
-        fscanf(fp, "%d", terreno->area);
-        fscanf(fp, "%*c");
-        fgets(terreno->endereco.rua, 100, fp);
-        fscanf(fp, "%d", terreno->endereco.num);
-        fscanf(fp, "%*c");
-        fgets(terreno->endereco.bairro, 100, fp);
-        fgets(terreno->endereco.cidade, 100, fp);
-        fgets(terreno->endereco.cep, 100, fp);
-    fclose(fp);
-}*/
+        void LeTerreno(tterreno* terreno){
+            FILE *fp;
+            fp = fopen("file1.txt", "r");
+                fgets(terreno->titulo, 100, fp);
+                fscanf(fp, "%c", terreno->aouv);
+                fscanf(fp, "%*c");
+                fscanf(fp, "%d", terreno->valor);
+                fscanf(fp, "%*c");
+                fscanf(fp, "%d", terreno->area);
+                fscanf(fp, "%*c");
+                fgets(terreno->endereco.rua, 100, fp);
+                fscanf(fp, "%d", terreno->endereco.num);
+                fscanf(fp, "%*c");
+                fgets(terreno->endereco.bairro, 100, fp);
+                fgets(terreno->endereco.cidade, 100, fp);
+                fgets(terreno->endereco.cep, 100, fp);
+        }
