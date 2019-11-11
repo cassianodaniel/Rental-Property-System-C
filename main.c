@@ -49,6 +49,7 @@ extern void Read();
 extern void Update();
 extern void Delete();
 extern void SalvaArquivo();
+extern void LeArquivo();
 
 void ImprimeTerreno(tterreno *pTerreno){
     printf("\t\t%s\n", pTerreno->titulo);
@@ -191,7 +192,7 @@ void SalvaArquivo(){
 
     if (fp2 == NULL){
         puts("Erro ao abrir FP.");
-        return 1;
+        return;
     }
 
     for(int i = 0; casas[i].titulo[0] != '\0' ; i++){
@@ -213,19 +214,6 @@ void SalvaArquivo(){
             fprintf(fp2, "%s", casas[i].endereco.cidade);
             fprintf(fp2, "%s", casas[i].endereco.cep);
 
-    }
-
-        for(int i = 0; apts[i].titulo[0] != '\0'; i++){
-
-            if(!apts[i].ativo)
-            continue;
-
-            fprintf(fp2, "3\n");
-            fprintf(fp2, "%s", apts[i].aouv);
-            fprintf(fp2, "%s", apts[i].titulo);
-            fprintf(fp2, "%d\n", apts[i].area);
-            fprintf(fp2, "%d\n", apts[i].valor);
-
         }
 
         for(int i = 0; terrenos[i].titulo[0] != '\0' ; i++){
@@ -245,6 +233,31 @@ void SalvaArquivo(){
             fprintf(fp2, "%s", terrenos[i].endereco.cep);
 
         }
+
+
+        for(int i = 0; apts[i].titulo[0] != '\0'; i++){
+
+            if(!apts[i].ativo)
+            continue;
+
+            fprintf(fp2, "3\n");
+            fprintf(fp2, "%c\n", apts[k].aouv);
+            fprintf(fp2, "%s", apts[k].titulo);
+            fprintf(fp2, "%c\n", apts[k].posicao);
+            fprintf(fp2, "%d\n", apts[k].area);
+            fprintf(fp2, "%d\n", apts[k].numQuartos);
+            fprintf(fp2, "%d\n", apts[k].numVagasG);
+            fprintf(fp2, "%d\n", apts[k].andar);
+            fprintf(fp2, "%d\n", apts[k].valor);
+            fprintf(fp2, "%d\n", apts[k].valorCond);
+            fprintf(fp2, "%s", apts[k].endereco.rua);
+            fprintf(fp2, "%d\n", apts[k].endereco.num);
+            fprintf(fp2, "%s", apts[k].endereco.bairro);
+            fprintf(fp2, "%s", apts[k].endereco.cidade);
+            fprintf(fp2, "%s", apts[k].endereco.cep);
+        }
+
+
 
     fclose(fp2);
 }
@@ -274,7 +287,7 @@ void LeArquivo(){
             case '1':
 
                 fgets(terrenos[i].titulo, 100, fp);
-                fscanf(fp, "%c", &terrenos[i].aouv);
+                fscanf(fp, "%c%", &terrenos[i].aouv);
                 fscanf(fp,"%*c");
                 fscanf(fp, "%d", &terrenos[i].valor);
                 fscanf(fp,"%*c");
@@ -319,6 +332,31 @@ void LeArquivo(){
 
             case '3':
                // LeApt(&apts[k]);
+                fscanf(fp, "%c", &apts[j].aouv);
+                fscanf(fp,"%*c");
+                fgets(apts[k].titulo, 100, fp);
+                fscanf(fp, "%d", &apts[k].area);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].numVagasG);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].numQuartos);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].andar);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].posicao);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].valor);
+                fscanf(fp,"%*c");
+                fscanf(fp, "%d", &apts[k].valorCond);
+                fscanf(fp,"%*c");
+                fgets(apts[k].endereco.rua, 100, fp);
+                fscanf(fp, "%d", &apts[k].endereco.num);
+                fscanf(fp,"%*c");
+                fgets(apts[k].endereco.bairro, 100, fp);
+                fgets(apts[k].endereco.cidade, 100, fp);
+                fgets(apts[k].endereco.cep, 100, fp);
+                apts[k].ativo = 1;
+
                 k++;
             break;
             }
