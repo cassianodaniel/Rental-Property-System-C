@@ -140,7 +140,8 @@ int main(void) {
 		"2) VISUALIZAR IMÓVEIS\n"
 		"3) ATUALIZAR IMÓVEIS\n"
 		"4) DELETAR IMÓVEIS\n"
-		"5) SAIR\n\n");
+		"5) SAIR\n"
+		"Por favor só saia com a opção sair!\n\n");
         scanf("%d%*c", &crud);
 
         switch (crud) {
@@ -287,7 +288,7 @@ void LeArquivo(){
             case '1':
 
                 fgets(terrenos[i].titulo, 100, fp);
-                fscanf(fp, "%c%", &terrenos[i].aouv);
+                fscanf(fp, "%c", &terrenos[i].aouv);
                 fscanf(fp,"%*c");
                 fscanf(fp, "%d", &terrenos[i].valor);
                 fscanf(fp,"%*c");
@@ -343,7 +344,7 @@ void LeArquivo(){
                 fscanf(fp,"%*c");
                 fscanf(fp, "%d", &apts[k].andar);
                 fscanf(fp,"%*c");
-                fscanf(fp, "%d", &apts[k].posicao);
+                fgets(apts[k].posicao, 100, fp);
                 fscanf(fp,"%*c");
                 fscanf(fp, "%d", &apts[k].valor);
                 fscanf(fp,"%*c");
@@ -754,19 +755,20 @@ void Delete(){
                     puts("Digite o numero da casa que voce deseja deletar:");
 
                     int numerocasa;
-
-                    for (i = 0; i < MAX_ARRAY; i++) {
-                    if (casas[i].titulo[0] == '\0')
-                        break;
-                    printf("Selecione o terreno que voce deseja deletar:\n");
-                    if (casas[i].ativo != 0){
-                    printf("(%d): %s\n", i + 1, casas[i].titulo);
-                        }
-                    scanf("%d%*c", &numerocasa+1);
-                    casas[numerocasa].ativo = 0;
-                    puts("Casa deletada com sucesso.");
+                for (i = 0, j = 0; i < MAX_ARRAY; i++, j++) {
+                    if (casas[j].titulo[0] == '\0')
                     break;
+
+                    if (casas[j].ativo != 0){
+                    printf("(%d): %s\n", i + 1, casas[j].titulo);
+                    }else{
+                    j--;
                     }
+                    }
+                    scanf("%d%*c", &numerocasa);
+                    casas[numerocasa - (i-j) - 1].ativo = 0;
+                    puts("Casa deletado com sucesso.\n");
+
                     break;
 
                 case 'a': //apartamento
@@ -776,18 +778,21 @@ void Delete(){
 
                     int numeroapt;
 
-                    for (i = 0; i < MAX_ARRAY; i++) {
-                    if (apts[i].titulo[0] == '\0')
-                        break;
-                    printf("Selecione o terreno que voce deseja deletar:\n");
-                    if (apts[i].ativo != 0){
-                    printf("(%d): %s\n", i + 1, apts[i].titulo);
-                        }
-                    scanf("%d%*c", &numeroapt+1);
-                    apts[numeroapt].ativo = 0;
-                    puts("Apartamento deletado com sucesso.");
+                    for (i = 0, j = 0; i < MAX_ARRAY; i++, j++) {
+                    if (apts[j].titulo[0] == '\0')
                     break;
+
+                    if (apts[j].ativo != 0){
+                    printf("(%d): %s\n", i + 1, apts[j].titulo);
+                    }else{
+                    j--;
                     }
+                    }
+                    scanf("%d%*c", &numeroapt);
+                    apts[numeroapt - (i-j) - 1].ativo = 0;
+                    puts("Apartamento deletado com sucesso.\n");
+
+                    break;
             }
 }
 
@@ -855,13 +860,13 @@ void Update(){
 
                 printf("Por favor, digite as informações referentes à casa.\n\n");
                 puts("Título do anúncio:\n");
-                fgets(casas[i].titulo, MAX_ARRAY, stdin);
+                fgets(casas[selecaoUpdate].titulo, 100, stdin);
                 puts("Área do terreno:\n");
-                scanf("%d", &casas[selecaoUpdate].areaTerreno);
+                scanf("%d%*c", &casas[selecaoUpdate].areaTerreno);
                 puts("Área construída:\n");
-                scanf("%d", &casas[selecaoUpdate].areaConstruida);
+                scanf("%d%*c", &casas[selecaoUpdate].areaConstruida);
                 puts("Número de quartos:\n");
-                scanf("%d", &casas[selecaoUpdate].numQuartos);
+                scanf("%d%*c", &casas[selecaoUpdate].numQuartos);
                 puts("Número de pavimentos:\n");
                 scanf("%d%*c", &casas[selecaoUpdate].numPavimentos);
                 puts("Valor da casa:\n");
@@ -869,15 +874,15 @@ void Update(){
                 puts("Está disponível para aluguel(a) ou para venda(v)?");
                 scanf("%c%*c", &casas[selecaoUpdate].aouv);
                 puts("Rua da casa:\n");
-                fgets(casas[i].endereco.rua, MAX_ARRAY, stdin);
+                fgets(casas[selecaoUpdate].endereco.rua, MAX_ARRAY, stdin);
                 puts("Número da casa:\n");
-                scanf("%d%*c", &casas[i].endereco.num);
+                scanf("%d%*c", &casas[selecaoUpdate].endereco.num);
                 puts("Bairro da casa:\n");
-                fgets(casas[i].endereco.bairro, MAX_ARRAY, stdin);
+                fgets(casas[selecaoUpdate].endereco.bairro, MAX_ARRAY, stdin);
                 puts("Cidade da casa:\n");
-                fgets(casas[i].endereco.cidade, MAX_ARRAY, stdin);
+                fgets(casas[selecaoUpdate].endereco.cidade, MAX_ARRAY, stdin);
                 puts("CEP da casa:\n");
-                fgets(casas[i].endereco.cep, MAX_ARRAY, stdin);
+                fgets(casas[selecaoUpdate].endereco.cep, MAX_ARRAY, stdin);
                 printf("\n\nCasa atualizada com sucesso!\n\n", casas[selecaoUpdate].titulo);
 
                 break;
