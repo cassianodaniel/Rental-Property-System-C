@@ -1,31 +1,30 @@
+Federal University of Paraíba - Center of Informatics - Department of Informatics
+Introduction to Programming
+Semester: 2019.1
 
-Universidade Federal da Paraíba - Centro de Informática - Departamento de Informática
-Introdução a Programação
-Semestre: 2019.1
+PROJECT SPECIFICATION:
+You have been hired to implement a system that manages the properties of a real estate company. All properties must contain some information related to the property address (including the street address (street name), number, neighborhood, zip code and city), or the value of that property.
+property and it is available for rent or sale. The system should also allow the following types of properties to be registered and consulted:
+• House: information about a house including title, number of floors, number of rooms, land area and built area; [X]
+• Apartment: information about an apartment, including an advertisement, an area, number of rooms, position (eg: south east, north east), floor, condominium value and number of parking spaces. [X]
+• Land: Contains information about a land, including ad title and its area. [X]
 
-ESPECIFICAÇÃO DO PROJETO:
-Você foi contratado para implementar um sistema que gerencia os imóveis de uma imobiliária. Todos os imóveis devem conter algumas informações relacionadas ao endereço do imóvel (incluindo o logradouro (nome da rua), número, bairro, CEP e cidade), o valor desse
-imóvel e se ele está disponível para aluguel ou venda. O sistema também deve permitir que sejam cadastrados e consultados os seguintes tipos de imóveis:
-• Casa: Contém informações sobre uma casa incluindo título anúncio, o número de pavimentos, número de quartos, área do terreno e área construída; [X]
-• Apartamento: Contém informações sobre um apartamento incluindo título anúncio, a sua área, número de quartos, posição (ex: nascente sul, nascente norte), andar, valor do condomínio e número de vagas de garagem. [X]
-• Terreno: Contém informações sobre um terreno, incluindo título anúncio e a sua área. [X]
+In addition, the system must contain the following functions:
+• A function that registers real estate (houses, apartments, land); [X]
+• A function that queries all available properties; [X]
+• A function that searches for a property by title; [X]
+• A function that searches for a property by neighborhood; [X]
+• A function that searches for properties above a certain value. [X]
+• A function that returns all properties available for sale by type (house, apartment, land); [X]
+• A function that returns all properties available for rent by type (house, apartment, land); [X]
+• A function to remove a particular property. [X]
+• A function to edit a specific property. [X]
+• A function for saving a list to a file. [X]
+• A function for reading a list in a file. [X]
 
-Além disso, o sistema deve conter as seguintes funções:
-• Uma função que cadastra imóveis (casas, apartamentos,terrenos); [X]
-• Uma função que consulta todos os imóveis disponíveis; [X]
-• Uma função que busca um imóvel por título; [X]
-• Uma função que busca um imóvel por bairro; [X]
-• Uma função que busca os imóveis acima de um determinado valor. [X]
-• Uma função que retorna todos os imóveis disponíveis para vender por tipo (casa, apartamento, terreno); [X]
-• Uma função que retorna todos os imóveis disponíveis para alugar por tipo (casa, apartamento, terreno); [X]
-• Uma função para remover um determinado imóvel.[X]
-• Uma função para editar um determinado imóvel. [X]
-• Uma função para salvar a lista em um arquivo. [X]
-• Uma função para ler a lista em um arquivo. [X]
+Use vectors. All display and search must be performed on the list, not the file.
+• The program must select an option menu and return to the menu after each option is selected. [X]
+• Real estate must be implemented with records (structure) [X]
 
-Utilize vetores. Toda a exibição e busca deve ser realizada na lista, não no arquivo.
-• O programa deve possuir um menu de opções, e deve retornar ao menu após cada opção ser selecionada. [X]
-• Os imóveis devem ser implementos com registros (struct)[X]
-
-A Lista de imóveis deve ser implementada na forma de um vetor do registro. [X]
-•Todas as operações de cadastro, exibição, busca, remoção, edição, devem ser realizadas no vetor, e não no arquivo. [x]
+A Property List must be implemented in the form of a record vector. [X]
+• All operations of registration, display, search, removal, editing, must be performed on the vector and not on the file. [x]
